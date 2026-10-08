@@ -95,3 +95,7 @@ Three frozen E16 quorums tested on 12 *new* synthetic procedural streams from a 
 ## E18 PROSPECTIVE tab
 
 Discloses retrospective E17 development use, weighted quorum selection, and fixed selected policy before showing twelve new E18 synthetic holdout streams. All three original quorum rules are evaluated and all false alarms, persistent misses, low coverage and abstentions are reported. Per-frame Python/JavaScript parity is checked in GitHub Actions; no model or device access is authorized.
+
+## E19 EVIDENCE tab
+
+A local-only producer and verifier for unsigned `field-evidence.synthetic-quorum.v1` packets. Exports all 36 E18 cases and 3,456 compact frame decisions with SHA-256, schema/origin/authority barriers and a strict local experiment-replay verifier. The UI never uploads or executes the pasted JSON. NestedBubbleGear, BrainC and SuperPhiVessel are potential **future** read-only consumers and are **not connected** in this rung.

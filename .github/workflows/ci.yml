@@ -93,6 +93,10 @@ jobs:
         run: python -m phimirrorhex --mode prospective-audit --output e18-prospective-audit-fixture.json
       - name: Verify E18 independent Python JavaScript selection and full audit parity
         run: node tests/check-prospective-audit-parity.mjs e18-prospective-audit-fixture.json
+      - name: Generate E19 portable nonauthorizing research evidence
+        run: python -m phimirrorhex --mode portable-evidence --output e19-portable-evidence.json
+      - name: Verify E19 independent browser and Python packet, SHA-256 and tamper barriers
+        run: node tests/check-portable-evidence-parity.mjs e19-portable-evidence.json
       - name: Upload reproducibility receipt
         uses: actions/upload-artifact@v4
         with:
@@ -115,3 +119,4 @@ jobs:
             e16-consensus-fixture.json
             e17-consensus-transfer-fixture.json
             e18-prospective-audit-fixture.json
+            e19-portable-evidence.json

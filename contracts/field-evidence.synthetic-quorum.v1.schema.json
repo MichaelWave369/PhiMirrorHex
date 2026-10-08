@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/MichaelWave369/PhiMirrorHex/blob/main/contracts/field-evidence.synthetic-quorum.v1.schema.json",
+  "title": "PhiMirrorHex E19 portable synthetic evidence envelope",
+  "description": "Unsigned synthetic research evidence. Contract-only, read-only, no grant of execution or source authenticity.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["payload","integrity"],
+  "properties": {
+    "integrity": {
+      "type":"object", "additionalProperties":false,
+      "required":["algorithm","sha256","signer","authenticity_proven"],
+      "properties":{
+        "algorithm":{"const":"SHA-256"},
+        "sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+        "signer":{"type":"null"},
+        "authenticity_proven":{"const":false}
+      }
+    },
+    "payload": {
+      "type":"object",
+      "required":["schema","producer","source_experiment","source_stage","origin","signature_status","consumer_integration_status","intended_readonly_consumers","claims","authority","lineage","selection","cases","summary","limitations"],
+      "additionalProperties":false,
+      "properties":{
+        "schema":{"const":"field-evidence.synthetic-quorum.v1"},
+        "producer":{"const":"PhiMirrorHex"},
+        "source_experiment":{"const":"phimirrorhex.e18.prospective-quorum-audit.v1"},
+        "source_stage":{"const":"E18"},
+        "origin":{"const":"SIMULATED"},
+        "signature_status":{"const":"UNSIGNED"},
+        "consumer_integration_status":{"const":"CONTRACT_ONLY_NOT_CONNECTED"},
+        "intended_readonly_consumers":{"type":"array","prefixItems":[{"const":"NestedBubbleGear"},{"const":"BrainC"},{"const":"SuperPhiVessel"}],"minItems":3,"maxItems":3},
+        "claims":{"type":"object","required":["real_measurement","independent_witnesses","consciousness_measured","physical_law_discovered","reliability_certified","agent_action_authorized"],"properties":{"real_measurement":{"const":false},"independent_witnesses":{"const":false},"consciousness_measured":{"const":false},"physical_law_discovered":{"const":false},"reliability_certified":{"const":false},"agent_action_authorized":{"const":false}},"additionalProperties":false},
+        "authority":{"type":"object","required":["grant","permitted","execution_allowed","deployment_allowed","network_action_allowed","must_be_revalidated"],"properties":{"grant":{"const":"NONE"},"permitted":{"const":"INSPECT_ONLY"},"execution_allowed":{"const":false},"deployment_allowed":{"const":false},"network_action_allowed":{"const":false},"must_be_revalidated":{"const":true}},"additionalProperties":false},
+        "lineage":{"type":"object"},
+        "selection":{"type":"object"},
+        "cases":{"type":"array","minItems":36,"maxItems":36,"items":{"type":"object","required":["quorum","family","seed","onset","first_alarm","false_alarm","persistent_missed","detected","detection_delay","attempted","abstained","frame_tokens"],"additionalProperties":false,"properties":{"quorum":{"enum":[1,2,3]},"family":{"type":"string"},"seed":{"type":"integer","minimum":4101,"maximum":4112},"onset":{"type":["integer","null"]},"first_alarm":{"type":["integer","null"]},"false_alarm":{"type":"boolean"},"persistent_missed":{"type":"boolean"},"detected":{"type":"boolean"},"detection_delay":{"type":["integer","null"]},"attempted":{"type":"integer","minimum":0,"maximum":96},"abstained":{"type":"integer","minimum":0,"maximum":96},"frame_tokens":{"type":"string","pattern":"^([0-7][0-7][01][01]){96}$"}}}},
+        "summary":{"type":"object"},
+        "limitations":{"type":"array","items":{"type":"string"}}
+      }
+    }
+  }
+}

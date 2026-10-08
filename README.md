@@ -2,7 +2,7 @@
 
 > **As Above, So Below. Coherence Through Symmetry.**
 
-**Φ-Mirror Hex E1–E18** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
+**Φ-Mirror Hex E1–E19** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
 
 The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edges, 12 triangular faces). The *logical* verification architecture is deliberately different from its geometry:
 
@@ -386,3 +386,20 @@ cd web && npm test && npm run build
 ```
 
 See [E18 frozen audit protocol](docs/E18_PROSPECTIVE_QUORUM_AUDIT.md). All observations remain programmed synthetic noise. This is not independent physical/biological replication, consciousness measurement, statistical certification or agent autonomy.
+
+## E19 · Portable Evidence Bridge
+
+E19 packages the deterministic E18 synthetic quorum audit into a **portable, read-only JSON receipt** with a strict schema, canonical **SHA-256 content digest**, the retrospective E17 selection record, 36 full case outcomes and **all 3,456 frame-level voting/refusal events** compacted to 4-character tokens. It maintains negative controls, failed cases, abstentions, explicit **SIMULATED** origin, correlated-witness limitations and **NO external authority**.
+
+Future **NestedBubbleGear / BrainC / SuperPhiVessel** adapters can use this contract for inspection and verification. **Those repositories are not modified or connected by E19.** The packet is **UNSIGNED**; a SHA-256 content digest does not establish authorship. The Python/JavaScript verifiers locally regenerate the frozen E18 experiment, reject malformed/tampered evidence, and never execute data.
+
+A new **EVIDENCE** React room generates, exports, pastes and checks local packets without remote service calls. The contract is available as [JSON Schema](contracts/field-evidence.synthetic-quorum.v1.schema.json) and [consumer protocol](docs/E19_PORTABLE_EVIDENCE_BRIDGE.md).
+
+```bash
+python -m phimirrorhex --mode portable-evidence --output e19-portable-evidence.json
+node tests/check-portable-evidence-parity.mjs e19-portable-evidence.json
+python -m pytest -q
+cd web && npm test && npm run build
+```
+
+Content integrity ≠ cryptographic signature. A validated synthetic packet ≠ measured physics, confirmed scientific theory, consciousness observation, independent witness, or permission for agent actions.
