@@ -53,6 +53,10 @@ jobs:
         run: python -m phimirrorhex --mode robustness --output e8-robustness-fixture.json
       - name: Verify E8 shifted-domain Python and JavaScript parity
         run: node tests/check-robustness-parity.mjs e8-robustness-fixture.json
+      - name: Generate exhaustive E9 observability frontier
+        run: python -m phimirrorhex --mode frontier --output e9-frontier-fixture.json
+      - name: Verify Python and JavaScript E9 sensor census parity
+        run: node tests/check-frontier-parity.mjs e9-frontier-fixture.json
       - name: Upload reproducibility receipt
         uses: actions/upload-artifact@v4
         with:
@@ -65,3 +69,4 @@ jobs:
             e6-coherence-fixture.json
             e7-adaptive-fixture.json
             e8-robustness-fixture.json
+            e9-frontier-fixture.json

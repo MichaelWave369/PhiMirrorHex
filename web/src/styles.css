@@ -309,3 +309,6 @@ footer a { color: #abc5d2; }
 /* E8: compact navigation for eight research rooms while preserving keyboard scrolling. */
 @media(max-width:1350px){.top-nav button{padding-left:9px;padding-right:9px;font-size:10px}}
 .top-nav{scrollbar-color:#406277 transparent}
+
+/* E9: nine research rooms; nav stays keyboard-scrollable instead of clipping. */
+@media(max-width:1500px){.top-nav button{padding-left:8px;padding-right:8px;font-size:9.5px}}

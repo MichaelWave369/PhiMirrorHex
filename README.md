@@ -2,7 +2,7 @@
 
 > **As Above, So Below. Coherence Through Symmetry.**
 
-**Φ-Mirror Hex E1–E8** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
+**Φ-Mirror Hex E1–E9** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
 
 The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edges, 12 triangular faces). The *logical* verification architecture is deliberately different from its geometry:
 
@@ -13,7 +13,7 @@ The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edg
 - A candidate Φ-weighted coherence score can be compared against non-Φ baselines.
 - Toy cancellation controls demonstrate a limitation of aggregate-only memory, **not** a claim of general AI improvement.
 
-**Status:** E1–E7 merged; E8 robustness and memory-compression experiment in review. These quantities are design choices and combinatorial identities, not evidence of a physical law, universal optimality, consciousness, or successful integration with other projects.
+**Status:** E1–E8 merged; E9 observability frontier under review. These quantities are design choices and combinatorial identities, not evidence of a physical law, universal optimality, consciousness, or successful integration with other projects.
 
 ## Quick start
 
@@ -198,3 +198,22 @@ cd web && npm test && npm run build
 ```
 
 Full protocol: [E8 robustness and memory compression](docs/E8_ROBUSTNESS_MEMORY.md).
+
+## E9 · The Observability Frontier
+
+Extends E8's hidden-state observability result into an **exhaustive, finite measurement census**. For every subset of six E5 outer-sector channels (64 masks including the empty mask), compare a restricted identity-preserving maximum gap against a sum-only gap over the **exact same selected channels**. Enumerate **24 frames × 4 detection thresholds × 4 causal controls**.
+
+- Different sensor budgets `k=0…6`: exact C(6,k) mask census, no sampling or tuning.
+- Controls: coupled+probe, no probe, no coupling, no delayed conveyor.
+- Thresholds: 0, 0.001, 0.01, 0.05. A sensor subset detects only when its gap exceeds the threshold.
+- At E5 frame 10, full signed identity retains a difference while the all-six sum cancels; after the fixed frame-12 probe, the coarse sum can also distinguish the pair.
+- **Important:** some partial sums can reveal a difference that the complete sum hides. The React **FRONTIER** tab displays that nuance rather than claiming all summation fails.
+- Python/Javascript parity, deterministic SHA-256 receipts and read-only E5 provenance. No real-world sensors, model connections or claims about consciousness.
+
+```bash
+python -m phimirrorhex --mode frontier --output e9-frontier-fixture.json
+node tests/check-frontier-parity.mjs e9-frontier-fixture.json
+cd web && npm test && npm run build
+```
+
+See [E9 frozen protocol](docs/E9_OBSERVABILITY_FRONTIER.md).

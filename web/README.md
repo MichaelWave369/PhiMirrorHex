@@ -55,3 +55,7 @@ The E7 lab compares five six-weight positive-simplex online learners with matche
 ## E8 ROBUSTNESS tab
 
 `src/RobustnessLab.jsx` uses `src/robustness-model.mjs` to visualize **unchanged E7 learned weights** under four preregistered synthetic input scenarios. The independent read-only E5 comparison demonstrates a concrete failure of sum-only compression at frame 10. The reference Python experiment and browser implementation are parity-checked in CI. No real-world physiology, live agent calls or authorization is implied.
+
+## E9 FRONTIER tab
+
+The **FRONTIER** tab enumerates all 64 subsets of the six synthetic E5 outer sensors, comparing an identity-aware Keyhole to a same-mask summed Keyhole across time, detection thresholds, and intervention controls. `src/frontier-model.mjs` independently reproduces `../phimirrorhex/frontier.py`; CI checks the complete generated report. No external data or action permissions are involved.
