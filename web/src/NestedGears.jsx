@@ -28,8 +28,8 @@ function GearState({frame,identity,activeRing,showBuffer}) {
         const polygon=Array.from({length:6},(_,sector)=>pos(r,sector).map(v=>v.toFixed(2)).join(',')).join(' ');
         const magnitude=row.reduce((s,v)=>s+Math.abs(v),0);
         return <g key={ring}>
-          <polygon points={polygon} fill={active?color:'none'} fillOpacity={active?.07:0}
-            stroke={active?color:'#3e6174'} strokeWidth={active?2.3:1}
+          <polygon points={polygon} fill={active?color:'none'} fillOpacity={active ? 0.07 : 0}
+            stroke={active?color:'#3e6174'} strokeWidth={active ? 2.3 : 1}
             strokeDasharray={active?undefined:'3 7'}/>
           {row.map((v,sector)=>{
             const [x,y]=pos(r,sector);

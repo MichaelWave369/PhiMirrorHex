@@ -37,6 +37,10 @@ jobs:
         run: python -m phimirrorhex --mode vessel-fixtures --output e4-vessel-fixture.json
       - name: Verify 80 Python / JavaScript E4 witness cases
         run: node tests/check-vessel-parity.mjs e4-vessel-fixture.json
+      - name: Generate E5 coupled-gear frozen scenarios
+        run: python -m phimirrorhex --mode gears-fixtures --output e5-gears-fixture.json
+      - name: Verify 32 Python / JavaScript E5 coupled-gear reports
+        run: node tests/check-gears-parity.mjs e5-gears-fixture.json
       - name: Upload reproducibility receipt
         uses: actions/upload-artifact@v4
         with:
@@ -45,3 +49,4 @@ jobs:
             e1-report.json
             e2-report.json
             e4-vessel-fixture.json
+            e5-gears-fixture.json

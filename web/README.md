@@ -39,3 +39,7 @@ The 666 edge comparisons count possible logical pairs, **not** 666 physical pyra
 ## E4 Nested Vessel tab
 
 The VESSEL tab uses `src/NestedVessel.jsx` and `src/vessel-model.mjs` to visualize the exact finite NBG-style Keyhole experiment. No data from users or external sensors is collected. The Keyhole-depth/gear gain controls show a delayed mathematical witness and zero-gain negative control. Python/JS parity is checked by the repository CI across 80 scenarios. See [`../docs/E4_NESTED_VESSEL.md`](../docs/E4_NESTED_VESSEL.md).
+
+## E5 GEARS tab
+
+The **GEARS** tab renders the frozen E5 synthetic delayed-conveyor witness with six nested six-sector rings, temporal Keyholes and intervention controls. Its implementation lives in `src/NestedGears.jsx` and `src/gears-model.mjs`, with a Python counterpart in `../phimirrorhex/gears.py`. There are **32 complete cross-language test cases**, plus Python and browser unit tests. All E5 inputs are synthetic; no live sensors or external connections.

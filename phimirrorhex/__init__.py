@@ -15,7 +15,7 @@ __all__ = [
     "ABOVE", "BELOW", "FIBONACCI_BUDGETS", "PHI",
     "audit_pairs", "bipyramid", "build_graph", "coherence",
 ]
-__version__ = "0.4.0"
+__version__ = "0.5.0"
 
 from .simulation import simulate_frame, simulate_series, verify_series
 from .bridges import readonly_envelope
@@ -24,3 +24,6 @@ __all__ += ["simulate_frame", "simulate_series", "verify_series", "readonly_enve
 
 from .vessel import vessel_report
 __all__ += ["vessel_report"]
+
+from .gears import gear_report
+__all__ += ["gear_report"]
