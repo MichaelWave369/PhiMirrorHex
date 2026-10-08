@@ -23,11 +23,12 @@ from .calibration import calibration_report
 from .drift import drift_report
 from .sequential import sequential_report
 from .consensus import consensus_report
+from .consensus_transfer import transfer_consensus_report
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="PhiMirrorHex deterministic research tools")
-    parser.add_argument("--mode", choices=("e1", "e2", "e2-bridge", "vessel", "vessel-fixtures", "gears", "gears-fixtures", "coherence", "adaptive", "robustness", "frontier", "generalize", "replicate", "transfer", "calibrate", "drift", "sequential", "consensus"), default="e1")
+    parser.add_argument("--mode", choices=("e1", "e2", "e2-bridge", "vessel", "vessel-fixtures", "gears", "gears-fixtures", "coherence", "adaptive", "robustness", "frontier", "generalize", "replicate", "transfer", "calibrate", "drift", "sequential", "consensus", "consensus-transfer"), default="e1")
     parser.add_argument("--budget", type=int, choices=FIBONACCI_BUDGETS, default=144)
     parser.add_argument("--seed", type=int, default=369)
     parser.add_argument("--steps", type=int, default=24)
@@ -49,6 +50,8 @@ def main() -> None:
         report = series if args.mode == "e2" else readonly_envelope(series, args.target)
     elif args.mode == "vessel":
         report = vessel_report(args.probe_layer, args.gain, args.observer_depth)
+    elif args.mode == "consensus-transfer":
+        report = transfer_consensus_report()
     elif args.mode == "consensus":
         report = consensus_report()
     elif args.mode == "sequential":

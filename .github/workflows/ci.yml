@@ -85,6 +85,10 @@ jobs:
         run: python -m phimirrorhex --mode consensus --output e16-consensus-fixture.json
       - name: Verify E16 independent Python JavaScript full quorum parity
         run: node tests/check-consensus-parity.mjs e16-consensus-fixture.json
+      - name: Generate E17 fresh out-of-family consensus transfer fixture
+        run: python -m phimirrorhex --mode consensus-transfer --output e17-consensus-transfer-fixture.json
+      - name: Verify E17 independently implemented Python and JavaScript full transfer parity
+        run: node tests/check-consensus-transfer-parity.mjs e17-consensus-transfer-fixture.json
       - name: Upload reproducibility receipt
         uses: actions/upload-artifact@v4
         with:
@@ -105,3 +109,4 @@ jobs:
             e14-drift-fixture.json
             e15-sequential-fixture.json
             e16-consensus-fixture.json
+            e17-consensus-transfer-fixture.json
