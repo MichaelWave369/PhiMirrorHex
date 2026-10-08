@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07111c">
+<title>Φ-Mirror Hex | E1 Research Instrument</title>
+<style>
+:root{color-scheme:dark;--bg:#07111c;--panel:#101c2c;--edge:#2c3e50;--ink:#ecf3f5;--muted:#9aafbc;--cyan:#65d3dc;--gold:#eec286;--purple:#b2a0f2}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 52% 0%,#17374c,#07111c 58%);color:var(--ink);font:15px/1.6 system-ui,Segoe UI,sans-serif;min-height:100vh}
+header,main,footer{max-width:1200px;margin:auto;padding:24px}header{border-bottom:1px solid #36516166;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.brand{font-size:19px;font-weight:780;letter-spacing:.05em}.tag{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.16em}
+h1{font-size:clamp(32px,5vw,58px);line-height:1.1;margin:12px 0;color:#fff;max-width:790px}h2{margin:0 0 12px;font-size:21px}.lede{color:#b1c5d1;max-width:760px}
+.hero{margin:18px 0 26px}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:16px}
+.card{background:linear-gradient(135deg,#142637ee,#0d1726ee);border:1px solid var(--edge);border-radius:16px;padding:18px}
+.stat strong{display:block;font-size:clamp(25px,3.7vw,44px);line-height:1.2;color:var(--cyan);font-variant-numeric:tabular-nums}
+.stat span{color:var(--muted);font-size:12px}.layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.8fr);gap:16px}
+.figure{position:relative;min-height:400px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.figure svg{display:block;max-height:530px;width:100%}.light{stroke:var(--cyan);fill:none}.warm{stroke:var(--gold);fill:none}
+.face1{fill:#4aacc1;fill-opacity:.1}.face2{fill:#cf9f65;fill-opacity:.1}.point{fill:#c6ebed}.minor{font-size:12px;fill:#b1c5d1;letter-spacing:.1em}
+.small{color:var(--muted);font-size:12px;margin:10px 0 0}.pill{display:inline-block;border:1px solid #39657b;border-radius:22px;color:var(--cyan);font-size:11px;padding:3px 9px;letter-spacing:.08em}
+.controls{display:flex;flex-direction:column;gap:15px}.control label{display:flex;justify-content:space-between;gap:12px;font-weight:650}
+input[type=range]{width:100%;accent-color:var(--cyan);margin:9px 0}.value{font-variant-numeric:tabular-nums;color:var(--cyan)}
+.budget{font-size:34px;font-weight:750;color:var(--gold);line-height:1.2}.track{height:9px;background:#26374a;border-radius:30px;overflow:hidden;margin:10px 0}.track>div{height:100%;width:21.62%;background:linear-gradient(90deg,var(--purple),var(--cyan));transition:width .2s}
+.matrix{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}.cell{border:1px solid #385265;background:#143247;min-height:38px;border-radius:6px;color:var(--cyan);cursor:pointer}
+.cell:hover,.cell:focus-visible,.cell.active{background:#376a78;color:white;outline:2px solid var(--gold);outline-offset:1px}
+.legend{display:flex;gap:15px;flex-wrap:wrap;color:var(--muted);font-size:12px}
+.marker{width:10px;height:10px;display:inline-block;border-radius:50%;margin-right:6px;background:var(--cyan)}
+.marker.gold{background:var(--gold)}.score{font-size:38px;color:var(--cyan);font-weight:750;font-variant-numeric:tabular-nums}
+.note{border-left:3px solid var(--gold);padding-left:14px;color:#b8c6cf}footer{color:var(--muted);font-size:12px}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.stats{gap:8px}.card{padding:14px}.figure{min-height:290px}header,main,footer{padding:16px}}
+</style>
+</head>
+<body>
+<header><div class="brand">Φ · MIRROR HEX <span class="pill">E1 / v0.1.0</span></div><div class="tag">As above, so below · Evidence before promotion</div></header>
+<main>
+<section class="hero"><div class="tag">Sixfold architecture / Fibonacci sampling / Experimental coherence</div>
+<h1>Make the geometry <span style="color:var(--cyan)">measurable.</span></h1>
+<p class="lede">A hexagonal bipyramid is the organizing metaphor. The audit graph is a separate, exact 37-node mathematical construction. Explore sixfold channels, a fixed gate, and proposed Φ weighting without treating pretty numbers as proof.</p></section>
+<section class="stats" aria-label="Topology summary">
+<div class="card stat"><strong>6 × 6</strong><span>36 cross-plane channels</span></div>
+<div class="card stat"><strong>37</strong><span>Logical audit nodes including gate</span></div>
+<div class="card stat"><strong>666</strong><span>Unique potential node pairs</span></div>
+</section>
+<div class="layout">
+<section class="card"><h2>Hexagonal bipyramid</h2><div class="legend"><span><i class="marker"></i>Above</span><span><i class="marker gold"></i>Below</span><span>Shared equator / six vertices</span></div>
+<div class="figure"><svg viewBox="0 0 720 590" role="img" aria-label="Wireframe showing two hexagonal pyramids joined at six equatorial vertices, one apex above and one below">
+<defs><linearGradient id="glow" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#80dfe8"/><stop offset="1" stop-color="#9d83d3"/></linearGradient></defs>
+<g stroke-width="2" stroke-linejoin="round">
+<polygon class="face1" points="360,53 138,275 360,407 585,275"></polygon>
+<polygon class="face2" points="360,536 138,275 360,407 585,275"></polygon>
+<g class="light"><path d="M360 53 L138 275 M360 53 L242 187 M360 53 L477 187 M360 53 L585 275 M360 53 L477 363 M360 53 L242 363"></path></g>
+<g class="warm"><path d="M360 536 L138 275 M360 536 L242 187 M360 536 L477 187 M360 536 L585 275 M360 536 L477 363 M360 536 L242 363"></path></g>
+<path d="M138 275 L242 187 L477 187 L585 275 L477 363 L242 363 Z" fill="#a1d8df" fill-opacity=".07" stroke="url(#glow)" stroke-width="2.5"></path>
+<path d="M138 275 L585 275 M242 187 L477 363 M477 187 L242 363" stroke="#718ba0" stroke-dasharray="4 9" opacity=".55"></path>
+</g><circle cx="360" cy="53" r="7" fill="#65d3dc"/><circle cx="360" cy="536" r="7" fill="#eec286"/><circle cx="360" cy="275" r="8" fill="#eadffb"/><text x="374" y="43" class="minor">ABOVE</text><text x="374" y="558" class="minor">BELOW</text><text x="374" y="268" class="minor">INTERFACE</text>
+</svg></div>
+<p class="small">Physical solid: 8 vertices, 18 edges, 12 triangular faces. The 666 checks are <strong>not</strong> its physical edges.</p>
+</section>
+<div class="controls">
+<section class="card"><h2>Fibonacci audit budget</h2><label for="stage" class="tag">Stage <span id="stageLabel">3 / 7</span></label>
+<div class="budget"><span id="budgetLabel">144</span> <span style="font-size:13px;color:var(--muted)">of 666</span></div>
+<input type="range" id="stage" min="0" max="6" step="1" value="2" aria-label="Audit budget stage">
+<div class="track"><div id="coverageBar"></div></div><p class="small"><span id="coverageLabel">21.6%</span> pair coverage. All 36 gate links remain mandatory.</p>
+</section>
+<section class="card"><h2>6 × 6 channel matrix</h2><div class="matrix" id="matrix" role="group" aria-label="Select one of 36 cross-plane channels"></div><p class="small" id="channelLabel">Selected: hypothesis → observation</p></section>
+<section class="card"><h2>Candidate Φ-coherence</h2><div class="tag">C = (E·R·U)^(1/3) × exp(−φD)</div><div class="score" id="score" aria-live="polite">0.766</div>
+<div class="control"><label for="evidence">Evidence <span class="value" id="ev">0.90</span></label><input id="evidence" type="range" min="0" max="100" value="90"></div>
+<div class="control"><label for="replay">Replay <span class="value" id="rv">0.90</span></label><input id="replay" type="range" min="0" max="100" value="90"></div>
+<div class="control"><label for="calibration">Calibration <span class="value" id="uv">0.90</span></label><input id="calibration" type="range" min="0" max="100" value="90"></div>
+<div class="control"><label for="contradictions">Contradictions <span class="value" id="dv">0.10</span></label><input id="contradictions" type="range" min="0" max="100" value="10"></div>
+<p class="small">Experimental score only. Never grants execution authority.</p>
+</section></div>
+</div>
+<section class="card" style="margin-top:16px"><h2>What the first experiment actually establishes</h2><p class="note">6×6=36 and C(37,2)=666 are exact. A φ penalty and Fibonacci check budgets are hypotheses to benchmark against simpler controls. A two-case toy study shows that cancelling channel values can retain meaningful identity information even when their sum is zero. It does not establish general AI improvements.</p></section>
+</main><footer>Φ-Mirror Hex E1 · Research visualization · MIT · Independent authorization required for downstream integrations.</footer>
+<script>
+"use strict";
+const budgets=[55,89,144,233,377,610,666];
+const above=["hypothesis","imagination","reasoning","prediction","synthesis","planning"];
+const below=["observation","measurement","simulation","falsification","audit","execution"];
+const byId=id=>document.getElementById(id);
+const matrix=byId("matrix");
+for(let i=0;i<6;i++){for(let j=0;j<6;j++){const b=document.createElement("button");b.type="button";b.className="cell";b.textContent=String(i+1)+"·"+String(j+1);b.setAttribute("aria-label",above[i]+" to "+below[j]);b.addEventListener("click",()=>{matrix.querySelectorAll(".cell").forEach(e=>e.classList.remove("active"));b.classList.add("active");byId("channelLabel").textContent="Selected: "+above[i]+" → "+below[j]+" (U"+(i+1)+":L"+(j+1)+")"});matrix.appendChild(b)}}
+matrix.firstElementChild.classList.add("active");
+function renderBudget(){const index=Number(byId("stage").value);const budget=budgets[index];byId("budgetLabel").textContent=budget;byId("stageLabel").textContent=String(index+1)+" / 7";byId("coverageLabel").textContent=(budget/666*100).toFixed(1)+"%";byId("coverageBar").style.width=(budget/666*100)+"%"}
+byId("stage").addEventListener("input",renderBudget);
+function renderScore(){const keys=["evidence","replay","calibration","contradictions"];const outs=["ev","rv","uv","dv"];const vals=keys.map((key,i)=>{const x=Number(byId(key).value)/100;byId(outs[i]).textContent=x.toFixed(2);return x});const phi=(1+Math.sqrt(5))/2;const score=Math.cbrt(vals[0]*vals[1]*vals[2])*Math.exp(-phi*vals[3]);byId("score").textContent=score.toFixed(3)}
+["evidence","replay","calibration","contradictions"].forEach(key=>byId(key).addEventListener("input",renderScore));
+renderBudget();renderScore();
+</script>
+</body></html>
