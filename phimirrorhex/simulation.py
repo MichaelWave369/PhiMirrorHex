@@ -11,7 +11,7 @@ from hashlib import sha256
 import json
 from math import cos, isfinite, sin
 
-from .core import ABOVE, BELOW, FIBONACCI_BUDGETS, PHI, build_graph, coherence
+from .core import ABOVE, BELOW, FIBONACCI_BUDGETS, PHI, audit_pairs, build_graph, coherence
 
 SCHEMA = "phimirrorhex.e2.series.v1"
 ALERT_THRESHOLD = 0.45
@@ -123,6 +123,10 @@ def simulate_series(steps: int = 24, seed: int = 369, anomaly: bool = True) -> d
             "ring_sizes": [1, 2, 3, 5, 8, 13],
             "ring_size_semantics": "six nested six-point orbit radii; not physical lengths",
         },
+        "audit_peer_order": [
+            [graph.channels.index(left), graph.channels.index(right)]
+            for left, right in audit_pairs(666, seed)[36:]
+        ],
         "frames": [simulate_frame(step, seed, anomaly) for step in range(steps)],
     }
     return {**payload, "sha256": digest(payload)}
