@@ -26,8 +26,17 @@ jobs:
         run: python -m pytest -q
       - name: Verify CLI produces JSON
         run: python -m phimirrorhex --budget 144 --seed 369 > e1-report.json
+      - name: Generate deterministic E2 fixture
+        run: python -m phimirrorhex --mode e2 --steps 24 --seed 369 --output e2-report.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Verify Python / JavaScript frame and edge parity
+        run: node tests/check-parity.mjs e2-report.json
       - name: Upload reproducibility receipt
         uses: actions/upload-artifact@v4
         with:
           name: e1-report-py${{ matrix.python-version }}
-          path: e1-report.json
+          path: |
+            e1-report.json
+            e2-report.json

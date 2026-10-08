@@ -1,0 +1,23 @@
+/* Scoped extension: the E1 page stays intact. */
+.e2-lab{margin-top:24px}
+.e2-banner{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.e2-tag{font-size:11px;letter-spacing:.13em;color:var(--gold);text-transform:uppercase}
+.e2-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.85fr);gap:16px;margin-top:15px}
+.e2-map{background:radial-gradient(circle at center,#173048,#07111e 75%);border:1px solid var(--edge);border-radius:14px;overflow:hidden}
+#e2-canvas{width:100%;height:540px;display:block;cursor:crosshair;touch-action:pan-y}
+.e2-controls{display:grid;gap:12px;align-content:start}
+.e2-controls label{display:flex;justify-content:space-between;gap:10px}
+.e2-controls input[type=range]{width:100%}
+.e2-controls input[type=number]{background:#101f30;border:1px solid #466276;color:white;max-width:120px;padding:7px;border-radius:6px}
+.e2-buttons{display:flex;gap:8px;flex-wrap:wrap}
+.e2-buttons button{border:1px solid #52728b;color:#f4f8f9;background:#173249;border-radius:8px;padding:9px 16px;cursor:pointer;font-size:14px}
+.e2-buttons button:hover{background:#234560}
+.e2-info{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.e2-info>div{border:1px solid #325068;border-radius:10px;padding:10px;text-align:center}
+.e2-info strong{display:block;font-size:22px;font-variant-numeric:tabular-nums;color:var(--cyan)}
+.e2-info small{font-size:10px;color:var(--muted)}
+#e2-gate[data-alert=true]{color:#ffab89}
+#e2-gate[data-alert=false]{color:#8de0c4}
+#e2-channel{overflow-wrap:anywhere;min-height:50px}
+@media(max-width:800px){.e2-grid{grid-template-columns:1fr}#e2-canvas{height:410px}}
+@media(max-width:440px){#e2-canvas{height:330px}.e2-info strong{font-size:19px}}
