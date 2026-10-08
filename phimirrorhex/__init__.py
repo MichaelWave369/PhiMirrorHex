@@ -15,4 +15,9 @@ __all__ = [
     "ABOVE", "BELOW", "FIBONACCI_BUDGETS", "PHI",
     "audit_pairs", "bipyramid", "build_graph", "coherence",
 ]
-__version__ = "0.1.0"
+__version__ = "0.2.0"
+
+from .simulation import simulate_frame, simulate_series, verify_series
+from .bridges import readonly_envelope
+
+__all__ += ["simulate_frame", "simulate_series", "verify_series", "readonly_envelope"]

@@ -30,6 +30,7 @@ input[type=range]{width:100%;accent-color:var(--cyan);margin:9px 0}.value{font-v
 .note{border-left:3px solid var(--gold);padding-left:14px;color:#b8c6cf}footer{color:var(--muted);font-size:12px}
 @media(max-width:760px){.layout{grid-template-columns:1fr}.stats{gap:8px}.card{padding:14px}.figure{min-height:290px}header,main,footer{padding:16px}}
 </style>
+<link rel="stylesheet" href="./living-hex.css">
 </head>
 <body>
 <header><div class="brand">Φ · MIRROR HEX <span class="pill">E1 / v0.1.0</span></div><div class="tag">As above, so below · Evidence before promotion</div></header>
@@ -73,6 +74,35 @@ input[type=range]{width:100%;accent-color:var(--cyan);margin:9px 0}.value{font-v
 </section></div>
 </div>
 <section class="card" style="margin-top:16px"><h2>What the first experiment actually establishes</h2><p class="note">6×6=36 and C(37,2)=666 are exact. A φ penalty and Fibonacci check budgets are hypotheses to benchmark against simpler controls. A two-case toy study shows that cancelling channel values can retain meaningful identity information even when their sum is zero. It does not establish general AI improvements.</p></section>
+
+<section class="card e2-lab" id="living-hex" aria-labelledby="living-title">
+  <div class="e2-banner">
+    <div><div class="e2-tag">E2 · The Living Hex / deterministic replay</div><h2 id="living-title">A hex that moves, remembers, and reveals contradictions.</h2></div>
+    <span class="pill">Synthetic simulation · no live agents</span>
+  </div>
+  <p class="lede">Play 36 named upper/lower channels across six Fibonacci-relative rings. Every frame is computed from a deterministic mathematical simulation. The graph uses all 36 mandatory gate links plus seeded, SHA-256-ranked peer pairs from E1. Orange nodes show deliberately injected disagreement.</p>
+  <div class="e2-grid">
+    <div>
+      <div class="e2-map"><canvas id="e2-canvas" aria-label="Animated 36-channel nested hex audit network; select a node to inspect its synthetic values" role="img"></canvas></div>
+      <p class="small" id="e2-channel" aria-live="polite">Select any node for its named channel measurements.</p>
+      <p class="small" id="e2-status" aria-live="polite">Loading deterministic pair ranking…</p>
+    </div>
+    <div class="e2-controls">
+      <div class="e2-info" aria-label="Current frame metrics">
+        <div><strong id="e2-score">0.000</strong><small>Experimental score</small></div>
+        <div><strong id="e2-alerts">0</strong><small>Flagged channels</small></div>
+        <div><strong id="e2-coverage">0.0%</strong><small>Graph coverage</small></div>
+      </div>
+      <div id="e2-gate" data-alert="false" role="status">No flagged synthetic disagreement</div>
+      <div class="e2-buttons"><button id="e2-play" type="button" aria-pressed="false">▶ Play</button><button id="e2-reset" type="button">↺ Reset</button></div>
+      <div><label for="e2-frame">Simulation frame <span id="e2-step-label">00</span> / 23</label><input id="e2-frame" type="range" min="0" max="23" value="0"></div>
+      <div><label for="e2-budget">Fibonacci audit budget <span id="e2-budget-label">144 / 666</span></label><input id="e2-budget" type="range" min="0" max="6" step="1" value="2"><p class="small">Peer relationships displayed: <span id="e2-peer-count">ranking…</span> + 36 mandatory gate links.</p></div>
+      <div><label for="e2-seed">Reproducibility seed</label><input id="e2-seed" type="number" min="0" max="2147483647" step="1" value="369"></div>
+      <div><label for="e2-anomaly">Inject controlled contradictions <input id="e2-anomaly" type="checkbox" checked></label><p class="small">Injections are limited to steps 10–17, at three known channel coordinates; replay them with the toggle off for a negative control.</p></div>
+      <p class="note">This visualization does not connect to Vessie, PhiOS, or external networks. Gate alerts and scores are synthetic diagnostic examples, not authorization, real-world measurements, or predictive claims.</p>
+    </div>
+  </div>
+</section>
 </main><footer>Φ-Mirror Hex E1 · Research visualization · MIT · Independent authorization required for downstream integrations.</footer>
 <script>
 "use strict";
@@ -89,4 +119,5 @@ function renderScore(){const keys=["evidence","replay","calibration","contradict
 ["evidence","replay","calibration","contradictions"].forEach(key=>byId(key).addEventListener("input",renderScore));
 renderBudget();renderScore();
 </script>
+<script type="module" src="./living-hex.mjs"></script>
 </body></html>

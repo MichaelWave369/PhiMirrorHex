@@ -2,7 +2,7 @@
 
 > **As Above, So Below. Coherence Through Symmetry.**
 
-**Φ-Mirror Hex E1** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
+**Φ-Mirror Hex E1/E2** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
 
 The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edges, 12 triangular faces). The *logical* verification architecture is deliberately different from its geometry:
 
@@ -13,7 +13,7 @@ The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edg
 - A candidate Φ-weighted coherence score can be compared against non-Φ baselines.
 - Toy cancellation controls demonstrate a limitation of aggregate-only memory, **not** a claim of general AI improvement.
 
-**Status:** E1 research prototype. These quantities are design choices and combinatorial identities, not evidence of a physical law, universal optimality, consciousness, or successful integration with other projects.
+**Status:** E1 foundation merged; E2 deterministic synthetic simulation under review. These quantities are design choices and combinatorial identities, not evidence of a physical law, universal optimality, consciousness, or successful integration with other projects.
 
 ## Quick start
 
@@ -72,3 +72,26 @@ Later, read-only adapters may provide audit receipts to **NestedBubbleGear**, **
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+## E2: The Living Hex
+
+E2 introduces **synthetic** streaming frames, three controlled disagreement injections, cross-language replay parity, 36 named channel values on Fibonacci-relative nested six-point rings, and read-only proposed observation envelopes. There is **no** production connection to NestedBubbleGear, SuperPhiVessel, PhiOS, or any external system.
+
+```bash
+# Generate and locally save a deterministic E2 series with SHA-256 digest
+python -m phimirrorhex --mode e2 --steps 24 --seed 369 --output e2-report.json
+
+# Generate a read-only proposal envelope for a future integration
+python -m phimirrorhex --mode e2-bridge --target nestedbubblegear
+python -m phimirrorhex --mode e2-bridge --target superphivessel
+
+# Run the exact cross-language parity check, using Node.js 22+
+node tests/check-parity.mjs e2-report.json
+
+# Serve the instrument from localhost (the original E1 panels remain intact)
+python -m http.server 8000 --directory docs
+```
+
+Open http://localhost:8000 and scroll to **E2 / The Living Hex**. Run/play frame controls and inspect individual labeled synthetic channels. This browser visualization runs the same deterministic frame equations as Python and uses Web Crypto to reproduce E1 SHA-256 audit ranking. It does **not** consume live models or sensor data.
+
+See [E2 contract](docs/E2_CONTRACT.md) for equations, receipt format, constraints, negative controls, and future integration requirements.

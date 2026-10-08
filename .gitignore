@@ -6,3 +6,5 @@ __pycache__/
 dist/
 build/
 e1-report.json
+
+e2-report.json
