@@ -95,3 +95,24 @@ python -m http.server 8000 --directory docs
 Open http://localhost:8000 and scroll to **E2 / The Living Hex**. Run/play frame controls and inspect individual labeled synthetic channels. This browser visualization runs the same deterministic frame equations as Python and uses Web Crypto to reproduce E1 SHA-256 audit ranking. It does **not** consume live models or sensor data.
 
 See [E2 contract](docs/E2_CONTRACT.md) for equations, receipt format, constraints, negative controls, and future integration requirements.
+
+## E4 · Nested Vessel / NBG-style Keyhole Measurement
+
+A new **VESSEL** tab in the React GitHub Pages research lab introduces a **finite synthetic measurement experiment** inspired by the formal vocabulary of [NestedBubbleGear](https://github.com/MichaelWave369/NestedBubbleGear).
+
+Two distinct six-sector internal states share a zero-sum coarse observation. Through the **same** fixed series of rotations and an adjustable interface gain, a delayed Keyhole probe can make their difference observable. Changing observer depth reveals the measurement ladder; turning gain off is a complete coarse-equivalence negative control.
+
+- **Six illustrative rings:** environment, sensory boundary, encoding, local loops, integration *proxy*, behavioral expression *proxy*.
+- **Deterministic positive and negative controls:** same interface for both states, delayed separating witness or no witness.
+- **Python ↔ JavaScript parity:** 80 complete reports across five probe layers, four gain settings and four observer depths.
+- **NBG provenance and claim firewall:** SIMULATED, no biometric measurement, no consciousness inference, no authorization.
+- **No external dependency:** all implementation lives in this repository; NestedBubbleGear remains unchanged.
+
+```bash
+python -m phimirrorhex --mode vessel --probe-layer 3 --gain 0.5 --observer-depth 3
+python -m phimirrorhex --mode vessel --probe-layer 3 --gain 0 --observer-depth 5
+python -m phimirrorhex --mode vessel-fixtures --output e4-vessel-fixture.json
+node tests/check-vessel-parity.mjs e4-vessel-fixture.json
+```
+
+See [E4 frozen methods](docs/E4_NESTED_VESSEL.md). The human-as-vessel interpretation is philosophical and conceptual, not an established physiological theory.

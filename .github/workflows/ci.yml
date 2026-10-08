@@ -1,4 +1,4 @@
-name: E1 Research Checks
+name: Hex Research Checks
 
 on:
   push:
@@ -33,6 +33,10 @@ jobs:
           node-version: "22"
       - name: Verify Python / JavaScript frame and edge parity
         run: node tests/check-parity.mjs e2-report.json
+      - name: Freeze E4 Python witness parity suite
+        run: python -m phimirrorhex --mode vessel-fixtures --output e4-vessel-fixture.json
+      - name: Verify 80 Python / JavaScript E4 witness cases
+        run: node tests/check-vessel-parity.mjs e4-vessel-fixture.json
       - name: Upload reproducibility receipt
         uses: actions/upload-artifact@v4
         with:
@@ -40,3 +44,4 @@ jobs:
           path: |
             e1-report.json
             e2-report.json
+            e4-vessel-fixture.json

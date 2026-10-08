@@ -35,3 +35,7 @@ The legacy static `docs/` E1/E2 instrument remains available in the repository, 
 - **Not implemented:** live agent feeds, sensor ingestion, write access, autonomous decisions, integration with PhiOS / SuperPhiVessel / NestedBubbleGear.
 
 The 666 edge comparisons count possible logical pairs, **not** 666 physical pyramid edges and not 666 verified factual claims. `Φ` and Fibonacci remain research hypotheses that require control comparisons.
+
+## E4 Nested Vessel tab
+
+The VESSEL tab uses `src/NestedVessel.jsx` and `src/vessel-model.mjs` to visualize the exact finite NBG-style Keyhole experiment. No data from users or external sensors is collected. The Keyhole-depth/gear gain controls show a delayed mathematical witness and zero-gain negative control. Python/JS parity is checked by the repository CI across 80 scenarios. See [`../docs/E4_NESTED_VESSEL.md`](../docs/E4_NESTED_VESSEL.md).

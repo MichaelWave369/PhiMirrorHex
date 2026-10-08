@@ -10,24 +10,41 @@ from .bridges import TARGETS, readonly_envelope
 from .core import FIBONACCI_BUDGETS
 from .experiments import experiment_report
 from .simulation import simulate_series
+from .vessel import GAINS, SCHEMA as VESSEL_SCHEMA, vessel_report
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="PhiMirrorHex deterministic research tools")
-    parser.add_argument("--mode", choices=("e1", "e2", "e2-bridge"), default="e1")
+    parser.add_argument("--mode", choices=("e1", "e2", "e2-bridge", "vessel", "vessel-fixtures"), default="e1")
     parser.add_argument("--budget", type=int, choices=FIBONACCI_BUDGETS, default=144)
     parser.add_argument("--seed", type=int, default=369)
     parser.add_argument("--steps", type=int, default=24)
     parser.add_argument("--no-anomaly", action="store_true", help="Disable synthetic anomaly injection")
     parser.add_argument("--target", choices=TARGETS, default="nestedbubblegear")
+    parser.add_argument("--probe-layer", type=int, default=3, choices=range(1, 6))
+    parser.add_argument("--observer-depth", type=int, default=3, choices=range(6))
+    parser.add_argument("--gain", type=float, default=0.5, choices=GAINS)
     parser.add_argument("--output", type=Path, help="Optional local JSON output (no network upload)")
     args = parser.parse_args()
 
     if args.mode == "e1":
         report = experiment_report(args.budget, args.seed)
-    else:
+    elif args.mode in ("e2", "e2-bridge"):
         series = simulate_series(args.steps, args.seed, not args.no_anomaly)
         report = series if args.mode == "e2" else readonly_envelope(series, args.target)
+    elif args.mode == "vessel":
+        report = vessel_report(args.probe_layer, args.gain, args.observer_depth)
+    else:
+        report = {
+            "schema": "phimirrorhex.e4.parity-suite.v1",
+            "source_schema": VESSEL_SCHEMA,
+            "epistemic_origin": "SIMULATED",
+            "cases": [
+                {"probe_layer": probe, "gain": gain, "observer_depth": depth,
+                 "report": vessel_report(probe, gain, depth)}
+                for probe in range(1, 6) for gain in GAINS for depth in (0, 2, 3, 5)
+            ],
+        }
     content = json.dumps(report, indent=2, sort_keys=True, allow_nan=False) + "\n"
     if args.output is not None:
         args.output.write_text(content, encoding="utf-8")

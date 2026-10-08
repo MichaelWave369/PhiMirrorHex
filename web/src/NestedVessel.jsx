@@ -34,9 +34,9 @@ function StateHex({label,letter,color,report,depth,showInternals}) {
         const highlight=level===depth;
         const vector=letter==='A'?ring.state_a:ring.state_b;
         const dim=level>depth;
-        return <g key={level} opacity={dim?.27:1}>
+        return <g key={level} opacity={dim ? 0.27 : 1}>
           <polygon points={polygon(center,center,radius)}
-            fill={highlight?color:'none'} fillOpacity={highlight?.063:0}
+            fill={highlight?color:'none'} fillOpacity={highlight ? 0.063 : 0}
             stroke={highlight?color:'#45718a'}
             strokeWidth={highlight?2.4:1}
             strokeDasharray={highlight?'none':'4 5'}/>
