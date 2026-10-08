@@ -2,7 +2,7 @@
 
 > **As Above, So Below. Coherence Through Symmetry.**
 
-**Φ-Mirror Hex E1/E2** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
+**Φ-Mirror Hex E1–E8** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
 
 The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edges, 12 triangular faces). The *logical* verification architecture is deliberately different from its geometry:
 
@@ -13,7 +13,7 @@ The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edg
 - A candidate Φ-weighted coherence score can be compared against non-Φ baselines.
 - Toy cancellation controls demonstrate a limitation of aggregate-only memory, **not** a claim of general AI improvement.
 
-**Status:** E1–E6 merged; E7 adaptive coherence under review. These quantities are design choices and combinatorial identities, not evidence of a physical law, universal optimality, consciousness, or successful integration with other projects.
+**Status:** E1–E7 merged; E8 robustness and memory-compression experiment in review. These quantities are design choices and combinatorial identities, not evidence of a physical law, universal optimality, consciousness, or successful integration with other projects.
 
 ## Quick start
 
@@ -176,3 +176,25 @@ cd web && npm test && npm run build
 ```
 
 See [E7 frozen protocol](docs/E7_ADAPTIVE_NESTED_COHERENCE.md). Any accuracy advantage applies only to these programmed synthetic worlds; **there is no φ optimality, biological or consciousness claim**.
+
+## E8 · Robustness & Memory Compression
+
+**E8** keeps E7's five adaptive learners **frozen** and evaluates them against new synthetic sensor conditions, with identical held-out target labels and fixed candidate selection:
+
+- `clean`: no-op negative control;
+- `noise`: deterministic independent bounded per-ring noise;
+- `dropout`: neutral imputation for missing rings 1 and 4;
+- `mean_only`: collapse six input identities into a common arithmetic mean.
+
+Across five programmed worlds × five learners × four input scenarios, the same 128 held-out labels are retained, with no retraining or test-based switching. An independent read-only E5 Keyhole check compares six signed outer-sector values against their one-number sum: at frame 10, full state distinguishes the constructed cases **2/2** while sum-only gives **1/2**. At frame 12, the fixed probe exposes the distinction through the coarse sum.
+
+The React Pages site adds a **ROBUSTNESS** tab with scenario selection, held-out error comparison, shift metrics, per-scale signals and the identity-compression witness. E8 remains completely simulated and non-authorizing.
+
+```bash
+python -m phimirrorhex --mode robustness --output e8-robustness-fixture.json
+node tests/check-robustness-parity.mjs e8-robustness-fixture.json
+python -m pytest -q
+cd web && npm test && npm run build
+```
+
+Full protocol: [E8 robustness and memory compression](docs/E8_ROBUSTNESS_MEMORY.md).

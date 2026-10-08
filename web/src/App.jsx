@@ -5,6 +5,7 @@ import NestedVessel from './NestedVessel.jsx';
 import NestedGears from './NestedGears.jsx';
 import CoherenceLab from './CoherenceLab.jsx';
 import AdaptiveLab from './AdaptiveLab.jsx';
+import RobustnessLab from './RobustnessLab.jsx';
 
 const REPO = 'https://github.com/MichaelWave369/PhiMirrorHex';
 const SCHEMA = 'phimirrorhex.e3.browser-snapshot.v1';
@@ -190,7 +191,7 @@ export default function App() {
     <header className="topbar">
       <div className="brand-lockup"><div className="brand-emblem" aria-hidden="true">Φ</div><div><div className="brand-name">MIRROR<span>HEX</span></div><div className="brand-subtitle">FIELD RESEARCH LAB · E3</div></div></div>
       <nav aria-label="Research lab sections" className="top-nav">
-        {['LAB','MATRIX','VESSEL','GEARS','COHERENCE','ADAPTIVE','METHOD'].map(name=><button key={name} onClick={()=>setTab(name)} aria-current={tab===name?'page':undefined} className={tab===name?'active':''}>{name}</button>)}
+        {['LAB','MATRIX','VESSEL','GEARS','COHERENCE','ADAPTIVE','ROBUSTNESS','METHOD'].map(name=><button key={name} onClick={()=>setTab(name)} aria-current={tab===name?'page':undefined} className={tab===name?'active':''}>{name}</button>)}
       </nav>
       <a href={REPO} className="repository-link" target="_blank" rel="noreferrer">GITHUB <SmallIcon name="link"/></a>
     </header>
@@ -282,11 +283,12 @@ export default function App() {
       {tab==='GEARS'&&<NestedGears/>}
       {tab==='COHERENCE'&&<CoherenceLab/>}
       {tab==='ADAPTIVE'&&<AdaptiveLab/>}
+      {tab==='ROBUSTNESS'&&<RobustnessLab/>}
       {tab==='METHOD'&&<MethodsView/>}
 
       <section className="truth-strip"><span className="truth-icon">ⓘ</span><div><b>A research instrument, not an oracle.</b><p>Exact topology, synthetic signals. No live agent data, external model calls, autonomous actions, or independently proven Φ/Fibonacci optimization. All integration claims require matched baselines, replay, and permissioned observability.</p></div></section>
     </main>
-    <footer><span>Φ MIRRORHEX · ENTER THE FIELD</span><span>CAPABILITY ≠ AUTHORITY · E7 ADAPTIVE COHERENCE</span><a href={REPO} target="_blank" rel="noreferrer">SOURCE CODE ↗</a></footer>
+    <footer><span>Φ MIRRORHEX · ENTER THE FIELD</span><span>CAPABILITY ≠ AUTHORITY · E8 ROBUSTNESS LAB</span><a href={REPO} target="_blank" rel="noreferrer">SOURCE CODE ↗</a></footer>
     {toast&&<div className="toast" role="status">{toast}</div>}
   </div>;
 }

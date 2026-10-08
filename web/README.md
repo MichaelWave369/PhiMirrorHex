@@ -51,3 +51,7 @@ The **GEARS** tab renders the frozen E5 synthetic delayed-conveyor witness with 
 ## E7 ADAPTIVE tab
 
 The E7 lab compares five six-weight positive-simplex online learners with matched training budgets on engineered, split-isolated worlds. `src/adaptive-model.mjs` is independently tested against the Python reference, and `src/AdaptiveLab.jsx` presents training trajectories, holdout scores and the shifted-label negative control. The E5 Keyhole causal receipt is **read-only** and cannot influence training or grant authority.
+
+## E8 ROBUSTNESS tab
+
+`src/RobustnessLab.jsx` uses `src/robustness-model.mjs` to visualize **unchanged E7 learned weights** under four preregistered synthetic input scenarios. The independent read-only E5 comparison demonstrates a concrete failure of sum-only compression at frame 10. The reference Python experiment and browser implementation are parity-checked in CI. No real-world physiology, live agent calls or authorization is implied.
