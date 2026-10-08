@@ -1,0 +1,189 @@
+import {useMemo,useState} from 'react';
+import {transferConsensusReport,TRANSFER_STREAMS} from './consensus-transfer-model.mjs';
+import './consensus-transfer-lab.css';
+
+const FAMILIES={
+ iid_stationary:'Independent-channel steady',
+ correlated_stationary:'Shared-noise steady',
+ correlated_step:'Shared-noise step',
+ correlated_ramp:'Shared-noise ramp',
+ impulse_stationary:'Short disturbance',
+ outlier_step:'Outlier + step'
+};
+const positive=new Set(['correlated_step','correlated_ramp','outlier_step']);
+const fmt=x=>Number(x).toFixed(3);
+const pct=x=>(100*x).toFixed(1)+'%';
+const reasons={
+ false_alert:'False alarm',
+ missed_persistent_change:'Missed persistent shift',
+ coverage_below_floor:'Quorum coverage below 75%'
+};
+const COLORS=['#83d9e5','#d0afe6','#edbe89'];
+function Stat({label,value,detail}){return <div className="ot-stat"><small>{label}</small><strong>{value}</strong><span>{detail}</span></div>;}
+function Chart({frames,limits,frame,onFrame,changed}){
+  const w=900,h=200,p=15;
+  const x=i=>p+(w-p*2)*i/95;
+  const max=Math.max(1,...limits,...frames.flatMap(f=>f.member_cusum))*1.1;
+  const y=v=>h-24-(h-40)*v/max;
+  return <div className="ot-chart">
+    <svg viewBox={'0 0 '+w+' '+h} preserveAspectRatio="none" role="img" aria-label="Three synthetic frozen observer CUSUM traces, quorum warning and sensor refusals">
+      {changed&&<line x1={x(48)} x2={x(48)} y1="11" y2={h-24} stroke="#e8b77e" strokeDasharray="5 5"/>}
+      {limits.map((v,i)=><line key={'l'+i} x1={p} x2={w-p} y1={y(v)} y2={y(v)} stroke={COLORS[i]} opacity=".45" strokeDasharray="5 7"/>)}
+      {COLORS.map((color,i)=><path key={color} d={frames.map((f,j)=>(j?'L':'M')+x(j).toFixed(2)+','+y(f.member_cusum[i]).toFixed(2)).join(' ')}
+        fill="none" stroke={color} strokeWidth="2" vectorEffect="non-scaling-stroke"/>)}
+      {frames.filter(f=>f.new_alert).map(f=><circle key={f.step} cx={x(f.step)} cy={h-24} r="6" fill="#f6ad91"/>)}
+      {frames.filter(f=>f.abstained).map(f=><circle key={f.step} cx={x(f.step)} cy="8" r="2.5" fill="#ae98da"/>)}
+      <line x1={x(frame)} x2={x(frame)} y1="0" y2={h-24} stroke="#e8f6f2" strokeDasharray="4 4"/>
+    </svg>
+    <div className="ot-axis"><span>Frame 0</span><span>48 {changed?'· sustained onset':'· no sustained event'}</span><span>Frame 95</span></div>
+    <input type="range" min="0" max="95" step="1" value={frame} onChange={e=>onFrame(Number(e.target.value))} aria-label="Scrub sealed synthetic ensemble frames"/>
+  </div>;
+}
+export default function ConsensusTransferLab(){
+  const r=useMemo(()=>transferConsensusReport(),[]);
+  const [q,setQ]=useState(2);
+  const [family,setFamily]=useState('correlated_step');
+  const [seed,setSeed]=useState(3105);
+  const [frame,setFrame]=useState(48);
+  const [onlyFailures,setOnlyFailures]=useState(true);
+  const [notice,setNotice]=useState('');
+  const policy=r.policies.find(p=>p.quorum===q);
+  const chosen=policy.trials.find(t=>t.seed===seed);
+  const current=chosen.observations[frame];
+  const familyTrials=TRANSFER_STREAMS.filter(t=>t[0]===family);
+  const listing=onlyFailures?r.failure_ledger:r.policies.flatMap(p=>p.trials.map(t=>({
+    quorum:p.quorum,family:t.family,seed:t.seed,first_alarm_step:t.first_alarm_step,abstained:t.abstained,
+    reason_flags:{false_alert:t.false_alarm,missed_persistent_change:t.persistent_change_missed,
+      coverage_below_floor:t.coverage<.75}
+  })));
+  const groups=Object.keys(FAMILIES);
+  const familyStats=groups.map(name=>({
+    family:name,
+    entries:policy.trials.filter(t=>t.family===name),
+  }));
+  function chooseFamily(f){
+    setFamily(f);setSeed(TRANSFER_STREAMS.find(row=>row[0]===f)[1]);setFrame(48);
+  }
+  async function exportLedger(){
+    try{
+      const receipt={...r,view:{quorum:q,family,seed,frame}};
+      const raw=JSON.stringify(receipt);
+      const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(raw));
+      const sum=Array.from(new Uint8Array(digest),n=>n.toString(16).padStart(2,'0')).join('');
+      const url=URL.createObjectURL(new Blob([JSON.stringify({...receipt,browser_sha256:sum,
+        digest_note:'SHA-256 of browser JSON.stringify(receipt) before digest fields; unsigned'},null,2)],{type:'application/json'}));
+      const a=document.createElement('a');a.href=url;a.download='phimirrorhex-e17-out-of-family.json';
+      document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+      setNotice('Complete synthetic E17 transfer report and failure ledger exported.');
+    }catch(err){setNotice('Export unavailable: '+err.message);}
+  }
+  return <section className="ot-page">
+    <header className="ot-hero">
+      <div><div className="eyebrow">E17 / OUT-OF-FAMILY CONSENSUS TRANSFER · FROZEN RULES</div>
+        <h2>Will the <em>council</em> survive new noise?</h2>
+        <p>Three correlated Keyholes. Three unchanged voting rules. Twelve new test streams created with a different procedural generator. Some channels share interference, some experience spikes, and some undergo genuine simulated shifts.</p>
+        <div className="ot-tags"><span>12 NEW STREAMS</span><span>6 NOISE FAMILIES</span><span>3 FROZEN VOTING RULES</span><span>ZERO RULE SELECTION</span></div>
+      </div>
+      <div className="ot-hero-note"><small>THE RESEARCH BOUNDARY</small><strong>New test draws.<br/>Shared witnesses.<br/>No promotion.</strong>
+        <p>New procedural populations are not independent natural-world observations. A passing quorum grants no external authority.</p>
+      </div>
+    </header>
+    <div className="ot-stats">
+      <Stat label="SEALED TEST CELLS" value={r.summary.evaluation_cells} detail="3 quorums × 12 new streams"/>
+      <Stat label="FALSE ALARMS" value={r.summary.false_alarm_cells} detail="Stationary, impulses and premature warnings"/>
+      <Stat label="MISSED PERSISTENT EVENTS" value={r.summary.missed_persistent_cells} detail="Never replace misses with early warnings"/>
+      <Stat label="FAILURE LEDGER CELLS" value={r.summary.failure_cells} detail="All loss conditions retained"/>
+    </div>
+    <section className="surface ot-policy">
+      <div className="panel-header"><div><div className="eyebrow">01 / IMMUTABLE MEMBERS & QUORUM</div><h2>Choose a rule to inspect</h2></div><span className="panel-badge">ALL THREE RULES SCORED</span></div>
+      <div className="ot-policy-inner">
+        <div className="ot-quorums">{[1,2,3].map(v=><button type="button" key={v} className={q===v?'active':''} aria-pressed={q===v}
+          onClick={()=>setQ(v)}><strong>{v}/3</strong><small>{v===1?'Any member':v===2?'Majority':'Unanimous'}</small></button>)}</div>
+        <div className="ot-members">{r.members.map((m,i)=><div key={m.id}>
+          <span className="ot-dot" style={{background:COLORS[i]}}/>
+          <b>{m.budget} channels · {m.readout==='identity_max'?'Identity-max':'Sum-only'}</b>
+          <strong>{m.mask.toString(2).padStart(6,'0')}</strong>
+          <small>Unchanged E15 threshold: {fmt(m.alert_limit)}</small>
+        </div>)}</div>
+        <p>All members inspect the same six-channel noise realization. Channel overlap remains documented; majority agreement is not independent replication.</p>
+      </div>
+    </section>
+    <section className="ot-families" aria-label="Select the synthetic noise family">{groups.map(f=><button type="button" key={f} className={family===f?'active':''}
+      onClick={()=>chooseFamily(f)} aria-pressed={family===f}>
+      <b>{FAMILIES[f]}</b><small>{positive.has(f)?'PERSISTENT EVENT · t48':'NEGATIVE CONTROL'}</small>
+    </button>)}</section>
+    <section className="surface ot-replay">
+      <div className="panel-header"><div><div className="eyebrow">02 / UNSEEN SYNTHETIC STREAM</div><h2>{FAMILIES[family]}</h2></div><span className="panel-badge">LCG32 GENERATOR · SEED {seed}</span></div>
+      <div className="ot-replay-body">
+        <div className="ot-seeds">{familyTrials.map(([,s])=><button type="button" key={s} className={seed===s?'active':''} onClick={()=>{setSeed(s);setFrame(48);}}>SEED {s}</button>)}</div>
+        <Chart frames={chosen.observations} limits={r.members.map(m=>m.alert_limit)} frame={frame} onFrame={setFrame} changed={positive.has(family)}/>
+        <div className="ot-frame">
+          <Stat label="SELECTED FRAME" value={'t = '+frame} detail="Never used for retuning"/>
+          <Stat label="ELIGIBLE MEMBERS" value={current.eligible+'/3'} detail="Unavailable channels refuse"/>
+          <Stat label="AFFIRMATIVE VOTES" value={current.votes+'/3'} detail="Frame-local, not historic votes"/>
+          <Stat label="FRAME DECISION" value={current.abstained?'ABSTAIN':current.new_alert?'FIRST ALARM':current.votes>=q?'QUORUM YES':'NO ALARM'} detail="Only first alarm emitted"/>
+        </div>
+        <div className="ot-member-votes">{r.members.map((m,i)=><div key={m.id}>
+          <b>KEYHOLE {i+1}</b>
+          <strong>{!current.member_available[i]?'ABSTAIN':current.member_votes[i]?'YES':'NO'}</strong>
+          <small>Gap {current.member_gaps[i]===null?'missing':fmt(current.member_gaps[i])} · CUSUM {fmt(current.member_cusum[i])}</small>
+        </div>)}</div>
+      </div>
+    </section>
+    <div className="ot-two">
+      <section className="surface">
+        <div className="panel-header"><div><div className="eyebrow">03 / TRANSFER RESULT</div><h2>What changed?</h2></div></div>
+        <div className="ot-inner">
+          <div className={'ot-verdict'+(chosen.false_alarm?' bad':chosen.persistent_change_detected?' good':'')}>
+            <small>FIRST-ALARM CLASSIFICATION</small>
+            <strong>{chosen.false_alarm?'FALSE ALARM':
+              chosen.persistent_change_detected?'PERSISTENT CHANGE DETECTED':
+              chosen.persistent_change_missed?'PERSISTENT CHANGE MISSED':'NO ALARM'}</strong>
+          </div>
+          <div className="ot-pair">
+            <Stat label="FIRST ALARM FRAME" value={chosen.first_alarm_step===null?'NONE':chosen.first_alarm_step} detail="One shot only"/>
+            <Stat label="DETECTION DELAY" value={chosen.detection_delay===null?'N/A':chosen.detection_delay+' frames'} detail="On/after frame 48"/>
+          </div>
+          <div className="ot-pair">
+            <Stat label="QUORUM COVERAGE" value={pct(chosen.coverage)} detail="Frames with enough observers"/>
+            <Stat label="ABSTAINED FRAMES" value={chosen.abstained+'/96'} detail="Never counted as correct decisions"/>
+          </div>
+        </div>
+      </section>
+      <section className="surface">
+        <div className="panel-header"><div><div className="eyebrow">04 / FAMILY & HISTORICAL AUDIT</div><h2>Failure modes by regime</h2></div></div>
+        <div className="ot-inner">
+          {familyStats.map(group=><div className="ot-family-row" key={group.family}>
+            <b>{FAMILIES[group.family]}</b>
+            <span>{group.entries.filter(t=>t.false_alarm).length} false · {group.entries.filter(t=>t.persistent_change_missed).length} missed</span>
+          </div>)}
+          <p>Original E16 replay: {policy.legacy_e16_context.e16_false_alarm_cells} false-alarm cells and {policy.legacy_e16_context.e16_missed_persistent_cells} missed-event cells across 8 older streams. Different generator and case mix make this contextual, not a matched causal effect.</p>
+        </div>
+      </section>
+    </div>
+    <section className="surface ot-ledger">
+      <div className="panel-header"><div><div className="eyebrow">05 / FAILURE EVIDENCE</div><h2>Keep every warning, miss and refusal</h2></div><span className="panel-badge">{r.summary.failure_cells} FLAGGED CELLS</span></div>
+      <div className="ot-inner">
+        <label><input type="checkbox" checked={onlyFailures} onChange={e=>setOnlyFailures(e.target.checked)}/> Show only failed policy/stream cells</label>
+        <div className="ot-failure-list">
+          {listing.length===0?<p>No failures under these fixed synthetic populations. No guarantee follows.</p>:
+          listing.map((record,i)=><button key={[record.quorum,record.seed,i].join(':')} type="button" onClick={()=>{
+            setQ(record.quorum);setFamily(record.family);setSeed(record.seed);setFrame(record.first_alarm_step??48);
+          }}>
+            <span><b>{record.quorum}/3</b><small>QUORUM</small></span>
+            <span><b>{record.seed}</b><small>SEED</small></span>
+            <span><b>{FAMILIES[record.family]}</b><small>SHIFT FAMILY</small></span>
+            <span><b>{Object.entries(record.reason_flags).filter(([,v])=>v).map(([k])=>reasons[k]).join(' · ')||'No failure'}</b><small>DETECTION / COVERAGE EVIDENCE</small></span>
+          </button>)}
+        </div>
+      </div>
+    </section>
+    <div className="ot-boundary">
+      <div><b>Out-of-family synthetic testing is not real-world validation.</b>
+        <p>The new generator and seeds stress fixed quorum rules, but the members remain correlated and everything is programmed. This is a research comparison, not three independent observers, consciousness sensing or authorization for external actions.</p>
+        <a href="https://github.com/MichaelWave369/PhiMirrorHex/blob/main/docs/E17_OUT_OF_FAMILY_CONSENSUS.md" target="_blank" rel="noreferrer">READ E17 FROZEN PROTOCOL ↗</a>
+      </div><button type="button" className="ghost-button" onClick={exportLedger}>↓ EXPORT FULL E17 LEDGER</button>
+    </div>
+    {notice&&<p className="ot-notice" role="status">{notice}</p>}
+  </section>;
+}
