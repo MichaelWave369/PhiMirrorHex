@@ -294,3 +294,9 @@ footer a { color: #abc5d2; }
   html { scroll-behavior: auto; }
   *, *:before, *:after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+/* E6 expands the header to six research tabs without clipping on mobile. */
+@media (max-width: 880px) {
+  .top-nav { overflow-x: auto; flex-wrap: nowrap; scrollbar-width: thin; }
+  .top-nav button { flex: 0 0 auto; min-width: 76px; white-space: nowrap; padding-left: 13px; padding-right: 13px; }
+}

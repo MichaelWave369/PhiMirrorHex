@@ -43,3 +43,7 @@ The VESSEL tab uses `src/NestedVessel.jsx` and `src/vessel-model.mjs` to visuali
 ## E5 GEARS tab
 
 The **GEARS** tab renders the frozen E5 synthetic delayed-conveyor witness with six nested six-sector rings, temporal Keyholes and intervention controls. Its implementation lives in `src/NestedGears.jsx` and `src/gears-model.mjs`, with a Python counterpart in `../phimirrorhex/gears.py`. There are **32 complete cross-language test cases**, plus Python and browser unit tests. All E5 inputs are synthetic; no live sensors or external connections.
+
+## E6 COHERENCE tab
+
+`src/CoherenceLab.jsx` compares equal, φ-inner, φ-outer, center, and alternating weighting schemes against five deliberately **engineered** synthetic ground-truth regimes, selecting on validation and reporting held-out error. Nothing is connected to live models, physics or biometric inputs. Core `src/coherence-model.mjs` mirrors the Python reference and passes CI cross-language parity tests.

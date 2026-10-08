@@ -41,6 +41,10 @@ jobs:
         run: python -m phimirrorhex --mode gears-fixtures --output e5-gears-fixture.json
       - name: Verify 32 Python / JavaScript E5 coupled-gear reports
         run: node tests/check-gears-parity.mjs e5-gears-fixture.json
+      - name: Generate E6 cross-scale coherence benchmark
+        run: python -m phimirrorhex --mode coherence --output e6-coherence-fixture.json
+      - name: Verify Python / JavaScript held-out benchmark parity
+        run: node tests/check-coherence-parity.mjs e6-coherence-fixture.json
       - name: Upload reproducibility receipt
         uses: actions/upload-artifact@v4
         with:
@@ -50,3 +54,4 @@ jobs:
             e2-report.json
             e4-vessel-fixture.json
             e5-gears-fixture.json
+            e6-coherence-fixture.json
