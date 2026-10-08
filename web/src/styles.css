@@ -316,3 +316,8 @@ footer a { color: #abc5d2; }
 /* E10: ten research rooms remain keyboard-scrollable without clipping. */
 .top-nav{min-width:0;scrollbar-width:thin;overflow-x:auto}
 @media(max-width:1550px){.top-nav button{padding-left:7px;padding-right:7px;font-size:9px}}
+
+/* E11 research-room tab survives narrow viewports with keyboard scrolling. */
+.top-nav{min-width:0;overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-width:thin}
+.top-nav button{flex:0 0 auto;white-space:nowrap}
+@media(max-width:1700px){.top-nav button{font-size:9px;padding-left:7px;padding-right:7px}}

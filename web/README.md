@@ -63,3 +63,7 @@ The **FRONTIER** tab enumerates all 64 subsets of the six synthetic E5 outer sen
 ## E10 GENERALIZE tab
 
 The GENERALIZE room visualizes preregistered training-only mask selection, independent validation and held-out source pairs, an unseen dense source family and a fixed intervention-sector shift. It compares selected policies against fixed first-k masks and a post-hoc test oracle (not permitted to influence selection). `src/generalization-model.mjs` and `../phimirrorhex/generalization.py` are independently compared in CI.
+
+## E11 REPLICATE tab
+
+A complete synthetic five-seed OOD replication and failure ledger, `src/ReplicationLab.jsx` compares frozen E10 training-selected Keyhole masks against identical-budget deterministic baseline masks. It retains per-seed, per-family and per-intervention counts, min/max outcomes and all losing runs, with read-only JSON exports. Python and JS engines are independently parity-tested in CI.
