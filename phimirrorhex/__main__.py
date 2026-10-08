@@ -11,11 +11,12 @@ from .core import FIBONACCI_BUDGETS
 from .experiments import experiment_report
 from .simulation import simulate_series
 from .vessel import GAINS, SCHEMA as VESSEL_SCHEMA, vessel_report
+from .gears import COUPLINGS, PROBE_GAINS, SCHEMA as GEARS_SCHEMA, gear_report
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="PhiMirrorHex deterministic research tools")
-    parser.add_argument("--mode", choices=("e1", "e2", "e2-bridge", "vessel", "vessel-fixtures"), default="e1")
+    parser.add_argument("--mode", choices=("e1", "e2", "e2-bridge", "vessel", "vessel-fixtures", "gears", "gears-fixtures"), default="e1")
     parser.add_argument("--budget", type=int, choices=FIBONACCI_BUDGETS, default=144)
     parser.add_argument("--seed", type=int, default=369)
     parser.add_argument("--steps", type=int, default=24)
@@ -24,6 +25,9 @@ def main() -> None:
     parser.add_argument("--probe-layer", type=int, default=3, choices=range(1, 6))
     parser.add_argument("--observer-depth", type=int, default=3, choices=range(6))
     parser.add_argument("--gain", type=float, default=0.5, choices=GAINS)
+    parser.add_argument("--coupling", type=float, choices=COUPLINGS, default=0.5)
+    parser.add_argument("--probe-gain", type=float, choices=PROBE_GAINS, default=0.5)
+    parser.add_argument("--no-conveyor", action="store_true")
     parser.add_argument("--output", type=Path, help="Optional local JSON output (no network upload)")
     args = parser.parse_args()
 
@@ -34,6 +38,20 @@ def main() -> None:
         report = series if args.mode == "e2" else readonly_envelope(series, args.target)
     elif args.mode == "vessel":
         report = vessel_report(args.probe_layer, args.gain, args.observer_depth)
+    elif args.mode == "gears":
+        report = gear_report(args.coupling, args.probe_gain, not args.no_conveyor)
+    elif args.mode == "gears-fixtures":
+        report = {
+            "schema": "phimirrorhex.e5.parity-suite.v1",
+            "source_schema": GEARS_SCHEMA,
+            "epistemic_origin": "SIMULATED",
+            "cases": [
+                {"coupling": coupling, "probe_gain": gain, "conveyor_enabled": enabled,
+                 "report": gear_report(coupling, gain, enabled)}
+                for coupling in COUPLINGS for gain in PROBE_GAINS
+                for enabled in (True, False)
+            ],
+        }
     else:
         report = {
             "schema": "phimirrorhex.e4.parity-suite.v1",

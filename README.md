@@ -116,3 +116,25 @@ node tests/check-vessel-parity.mjs e4-vessel-fixture.json
 ```
 
 See [E4 frozen methods](docs/E4_NESTED_VESSEL.md). The human-as-vessel interpretation is philosophical and conceptual, not an established physiological theory.
+
+## E5 · Nested Gear Coupling / Delayed Conveyor
+
+**E5** adds a time-dependent synthetic extension to the same PhiMirrorHex repo:
+
+- Six sectors in **six coupled layers**, with alternating local gear rotation and one-step conveyor memory;
+- Two counterposed states, initially identical through the restricted Keyhole `P(x)=sum(outer ring)`;
+- Delayed hidden-state arrival at frame **10**, while the coarse Keyhole still reports equality;
+- A predetermined identical outer interface probe at frame **12** reveals the difference (default outer gap `0.0703125`);
+- **No coupling / no probe / no conveyor** controls block the witness, separating transport effects from observation;
+- **32 × 24 exact Python↔JavaScript replay comparisons** across all frozen coupling, gain and conveyor settings.
+
+The React research site includes a **GEARS** tab with twin six-ring animated diagrams, transport controls, time scrubbing, the hidden/observable separation traces, and local synthetic JSON exports.
+
+```bash
+python -m phimirrorhex --mode gears --coupling 0.5 --probe-gain 0.5
+python -m phimirrorhex --mode gears --coupling 0 --probe-gain 0.5
+python -m phimirrorhex --mode gears-fixtures --output e5-gears-fixture.json
+node tests/check-gears-parity.mjs e5-gears-fixture.json
+```
+
+See [E5 frozen protocol](docs/E5_NESTED_GEAR_COUPLING.md). This remains a **finite constructed toy**. Neither Φ nor Fibonacci is necessary for the separation, and no human, physiological, physical, model or consciousness measurement is claimed.
