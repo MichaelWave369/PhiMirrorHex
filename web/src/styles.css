@@ -326,3 +326,8 @@ footer a { color: #abc5d2; }
 .top-nav{min-width:0;overflow-x:auto;scrollbar-width:thin;overscroll-behavior-inline:contain}
 .top-nav button{flex:0 0 auto;white-space:nowrap}
 @media(max-width:1750px){.top-nav button{font-size:9px;padding-left:6px;padding-right:6px}}
+
+/* E13: preserve keyboard-scrollable nav for all thirteen research rooms. */
+.top-nav{min-width:0;overflow-x:auto;scrollbar-width:thin;overscroll-behavior-inline:contain}
+.top-nav button{flex:0 0 auto;white-space:nowrap}
+@media(max-width:1800px){.top-nav button{padding-left:6px;padding-right:6px;font-size:9px}}

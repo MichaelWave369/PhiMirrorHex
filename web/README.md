@@ -71,3 +71,7 @@ A complete synthetic five-seed OOD replication and failure ledger, `src/Replicat
 ## E12 TRANSFER tab
 
 The TRANSFER research room compares maximin-development Keyhole masks against unchanged E10 and first-k baselines across five prospectively isolated synthetic seeds. It includes a strictly non-authorizing transfer criterion, intervention controls, per-family metrics, and a full failure ledger. `src/transfer-model.mjs` is independently parity-tested against `../phimirrorhex/transfer.py` in CI.
+
+## E13 CALIBRATE tab
+
+Displays calibrated noise-only detection thresholds, prospective false-alarm and signal counts, fault-triggered abstentions, mask/coverage metrics and complete synthetic failure evidence. `src/calibration-model.mjs` is parity-tested against `../phimirrorhex/calibration.py`, and all earlier rooms remain available.
