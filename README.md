@@ -2,7 +2,7 @@
 
 > **As Above, So Below. Coherence Through Symmetry.**
 
-**Φ-Mirror Hex E1–E12** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
+**Φ-Mirror Hex E1–E13** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
 
 The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edges, 12 triangular faces). The *logical* verification architecture is deliberately different from its geometry:
 
@@ -273,3 +273,25 @@ cd web && npm test && npm run build
 ```
 
 See [E12 frozen protocol](docs/E12_SENSOR_TRANSFER_GATE.md).
+
+## E13 · Calibrated Keyhole Detection & Refusal
+
+The E13 **CALIBRATE** research room tests whether frozen E12 sensor masks can discriminate an engineered A/B contrast from **independent additive sensor noise**, and refuse to classify a pair when a selected measurement channel has an explicit fault flag.
+
+- **48 null-only calibration cases** on seed **1401**, entirely separated from five prospective test seeds **1501–1505**.
+- Fixed nuisance amplitude **0.018**; thresholds set from the third-largest calibration null gap, floored at **0.01**, so at most two calibration false alarms by construction. This **does not** guarantee the prospective false-alarm rate.
+- Three unchanged same-budget mask arms: E12 robust, E10 trained and first-k fixed.
+- Three conditions: matched probe, shifted probe, and no-coupling **null-only** control.
+- Every eighth case has a declared unavailable sensor. If the policy needs that channel, it **ABSTAINS**, without earning detection or correct-rejection credit.
+- All 14 policies × 5 seeds × 3 conditions = **210 test cells**; false alarms, signal hits/misses, coverage, calibration thresholds, explicit abstentions and full loss ledger.
+- Synthetic `PASS_IN_TOY` requires nonzero sensor budget, ≥75% coverage, ≤10% observed false alarms and nonzero constructed positive detections. **No result authorizes external action.**
+- Independent Python/JS parity and complete source/threshold/evidence receipts in CI.
+
+```bash
+python -m phimirrorhex --mode calibrate --output e13-calibration-fixture.json
+node tests/check-calibration-parity.mjs e13-calibration-fixture.json
+python -m pytest -q
+cd web && npm test && npm run build
+```
+
+See [E13 frozen protocol](docs/E13_CALIBRATION_REFUSAL.md).
