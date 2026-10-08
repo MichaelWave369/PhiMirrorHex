@@ -18,7 +18,7 @@ export function perturb(features,index,scenario){
     const {features:noise}=sampleFeatures(NOISE_SEED,index);
     return features.map((x,k)=>Math.max(0,Math.min(1,x+NOISE_AMPLITUDE*(noise[k]-.5))));
   }
-  if(scenario==='dropout')return features.map((x,k)=>DROPPED_RINGS.includes(k)?.5:x);
+  if(scenario==='dropout')return features.map((x,k)=>DROPPED_RINGS.includes(k) ? 0.5 : x);
   const mean=features.reduce((a,b)=>a+b,0)/6;
   return Array(6).fill(mean);
 }

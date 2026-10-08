@@ -305,3 +305,7 @@ footer a { color: #abc5d2; }
 .top-nav{min-width:0;overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-width:thin;flex-wrap:nowrap}
 .top-nav button{flex-shrink:0;white-space:nowrap}
 @media(max-width:1200px){.top-nav button{padding:0 10px;font-size:10px}}
+
+/* E8: compact navigation for eight research rooms while preserving keyboard scrolling. */
+@media(max-width:1350px){.top-nav button{padding-left:9px;padding-right:9px;font-size:10px}}
+.top-nav{scrollbar-color:#406277 transparent}

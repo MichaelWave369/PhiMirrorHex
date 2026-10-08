@@ -49,6 +49,10 @@ jobs:
         run: python -m phimirrorhex --mode adaptive --output e7-adaptive-fixture.json
       - name: Verify independent Python and JavaScript adaptive learning
         run: node tests/check-adaptive-parity.mjs e7-adaptive-fixture.json
+      - name: Generate frozen E8 robustness benchmark
+        run: python -m phimirrorhex --mode robustness --output e8-robustness-fixture.json
+      - name: Verify E8 shifted-domain Python and JavaScript parity
+        run: node tests/check-robustness-parity.mjs e8-robustness-fixture.json
       - name: Upload reproducibility receipt
         uses: actions/upload-artifact@v4
         with:
@@ -60,3 +64,4 @@ jobs:
             e5-gears-fixture.json
             e6-coherence-fixture.json
             e7-adaptive-fixture.json
+            e8-robustness-fixture.json
