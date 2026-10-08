@@ -2,7 +2,7 @@
 
 > **As Above, So Below. Coherence Through Symmetry.**
 
-**Φ-Mirror Hex E1–E14** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
+**Φ-Mirror Hex E1–E15** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
 
 The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edges, 12 triangular faces). The *logical* verification architecture is deliberately different from its geometry:
 
@@ -312,3 +312,22 @@ cd web && npm test && npm run build
 ```
 
 See [E14 frozen protocol](docs/E14_DRIFT_SHADOW.md). SIMULATED only; no self-recalibrating deployed sensor, biological inference or external action permission.
+
+## E15 · Sequential Keyhole Change Detection & Refusal
+
+E15 turns the E14 batch-noise drift experiment into a finite **96-frame synthetic stream**. It uses the 14 E13 robust masks and their unchanged noise floors, then calibrates a one-shot CUSUM alert limit using **four nominal-only development streams** (seeds 1901–1904). No test stream adjusts the threshold.
+
+Eight sealed streams use independent seeds 2201–2208 in four predeclared noise regimes: stationary/no change, sustained step at frame 48, gradual ramp starting frame 48, and brief three-frame spike (transient negative control). Each step records the measurement gap, CUSUM, fault-triggered abstention and first alert. Earlier-than-change warnings remain **false alarms**, never converted to detection. Persistent changes with no on-time first alarm remain missed events.
+
+The **SEQUENCE** React tab includes selectable observation budgets, interactive 96-frame CUSUM timelines, a fixed alert limit, detection delays, missed-event counts, sensor coverage and the full failure ledger. There are **14 frozen policies × 8 sealed streams = 112 evaluated cells**; both Python and independently implemented JavaScript must agree for every frame in CI.
+
+**Limited interpretation:** all signals, null pairs and change points are programmed; zero development false alarms result from threshold selection on those four controls, not a population guarantee. No external sensors or agent authority.
+
+```bash
+python -m phimirrorhex --mode sequential --output e15-sequential-fixture.json
+node tests/check-sequential-parity.mjs e15-sequential-fixture.json
+python -m pytest -q
+cd web && npm test && npm run build
+```
+
+See [E15 frozen protocol](docs/E15_SEQUENTIAL_CHANGE.md).

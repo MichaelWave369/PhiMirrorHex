@@ -77,6 +77,10 @@ jobs:
         run: python -m phimirrorhex --mode drift --output e14-drift-fixture.json
       - name: Verify E14 independent Python JavaScript monitor and failure parity
         run: node tests/check-drift-parity.mjs e14-drift-fixture.json
+      - name: Generate E15 sealed sequential warning and refusal ledger
+        run: python -m phimirrorhex --mode sequential --output e15-sequential-fixture.json
+      - name: Verify Python and JavaScript E15 sequential frame and failure parity
+        run: node tests/check-sequential-parity.mjs e15-sequential-fixture.json
       - name: Upload reproducibility receipt
         uses: actions/upload-artifact@v4
         with:
@@ -95,3 +99,4 @@ jobs:
             e12-transfer-fixture.json
             e13-calibration-fixture.json
             e14-drift-fixture.json
+            e15-sequential-fixture.json

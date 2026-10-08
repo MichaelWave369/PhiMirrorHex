@@ -21,11 +21,12 @@ from .replication import replication_report
 from .transfer import transfer_report
 from .calibration import calibration_report
 from .drift import drift_report
+from .sequential import sequential_report
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="PhiMirrorHex deterministic research tools")
-    parser.add_argument("--mode", choices=("e1", "e2", "e2-bridge", "vessel", "vessel-fixtures", "gears", "gears-fixtures", "coherence", "adaptive", "robustness", "frontier", "generalize", "replicate", "transfer", "calibrate", "drift"), default="e1")
+    parser.add_argument("--mode", choices=("e1", "e2", "e2-bridge", "vessel", "vessel-fixtures", "gears", "gears-fixtures", "coherence", "adaptive", "robustness", "frontier", "generalize", "replicate", "transfer", "calibrate", "drift", "sequential"), default="e1")
     parser.add_argument("--budget", type=int, choices=FIBONACCI_BUDGETS, default=144)
     parser.add_argument("--seed", type=int, default=369)
     parser.add_argument("--steps", type=int, default=24)
@@ -47,6 +48,8 @@ def main() -> None:
         report = series if args.mode == "e2" else readonly_envelope(series, args.target)
     elif args.mode == "vessel":
         report = vessel_report(args.probe_layer, args.gain, args.observer_depth)
+    elif args.mode == "sequential":
+        report = sequential_report()
     elif args.mode == "drift":
         report = drift_report()
     elif args.mode == "calibrate":
