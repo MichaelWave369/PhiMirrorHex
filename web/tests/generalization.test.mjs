@@ -13,7 +13,7 @@ test('E10 independent synthetic source draws and probe guards',()=>{
 test('E10 full train selection frozen before OOD episodes',()=>{
   const r=generalizationReport();
   assert.equal(r.policies.length,14);
-  assert.equal(r.protocol.heldout_count,48);
+  assert.equal(r.protocol.holdout_count,48);
   assert.equal(r.protocol.holdout_dense_count,24);
   assert.equal(r.protocol.heldout_used_for_selection,false);
   assert.equal(r.protocol.validation_used_for_selection,false);
