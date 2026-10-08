@@ -312,3 +312,7 @@ footer a { color: #abc5d2; }
 
 /* E9: nine research rooms; nav stays keyboard-scrollable instead of clipping. */
 @media(max-width:1500px){.top-nav button{padding-left:8px;padding-right:8px;font-size:9.5px}}
+
+/* E10: ten research rooms remain keyboard-scrollable without clipping. */
+.top-nav{min-width:0;scrollbar-width:thin;overflow-x:auto}
+@media(max-width:1550px){.top-nav button{padding-left:7px;padding-right:7px;font-size:9px}}

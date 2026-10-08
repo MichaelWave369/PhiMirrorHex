@@ -2,7 +2,7 @@
 
 > **As Above, So Below. Coherence Through Symmetry.**
 
-**Φ-Mirror Hex E1–E9** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
+**Φ-Mirror Hex E1–E10** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
 
 The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edges, 12 triangular faces). The *logical* verification architecture is deliberately different from its geometry:
 
@@ -13,7 +13,7 @@ The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edg
 - A candidate Φ-weighted coherence score can be compared against non-Φ baselines.
 - Toy cancellation controls demonstrate a limitation of aggregate-only memory, **not** a claim of general AI improvement.
 
-**Status:** E1–E8 merged; E9 observability frontier under review. These quantities are design choices and combinatorial identities, not evidence of a physical law, universal optimality, consciousness, or successful integration with other projects.
+**Status:** E1–E9 merged; E10 causal generalization experiment under review. These quantities are design choices and combinatorial identities, not evidence of a physical law, universal optimality, consciousness, or successful integration with other projects.
 
 ## Quick start
 
@@ -217,3 +217,20 @@ cd web && npm test && npm run build
 ```
 
 See [E9 frozen protocol](docs/E9_OBSERVABILITY_FRONTIER.md).
+
+## E10 · Independent Causal Generalization
+
+E9 enumerated sensor masks for one specially constructed state pair. E10 chooses a mask from **48 synthetic training episodes** (seed 901), reports **24 validation episodes** (seed 902), then evaluates a frozen choice on **48 held-out pairs**, half in a previously unseen dense-pattern family (seed 903).
+
+The six-layer delayed-conveyor model is evaluated at step 12 under known-probe, unseen probe-sector, no-probe and no-coupling conditions. All 64 candidate masks are considered for **each** of seven sensor budgets and two readouts (identity-preserving max vs same-mask sum). Mask selection uses training only. A same-budget precommitted first-k baseline and a **post-hoc test oracle clearly forbidden for selection** are separately reported. Zero-coupling is a transport negative control; no-probe may still reveal differences to *partial* masks.
+
+The live **GENERALIZE** tab includes a budget selector, held-out scoreboard, frozen-mask comparisons and six synthetic A/B case views. Python and JavaScript independently reproduce all train-only choices, test counts and example states with CI parity.
+
+```bash
+python -m phimirrorhex --mode generalize --output e10-generalization-fixture.json
+node tests/check-generalization-parity.mjs e10-generalization-fixture.json
+python -m pytest -q
+cd web && npm test && npm run build
+```
+
+See [E10 frozen protocol](docs/E10_CAUSAL_GENERALIZATION.md). All results remain synthetic and non-authorizing.

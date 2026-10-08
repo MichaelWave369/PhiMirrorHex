@@ -59,3 +59,7 @@ The E7 lab compares five six-weight positive-simplex online learners with matche
 ## E9 FRONTIER tab
 
 The **FRONTIER** tab enumerates all 64 subsets of the six synthetic E5 outer sensors, comparing an identity-aware Keyhole to a same-mask summed Keyhole across time, detection thresholds, and intervention controls. `src/frontier-model.mjs` independently reproduces `../phimirrorhex/frontier.py`; CI checks the complete generated report. No external data or action permissions are involved.
+
+## E10 GENERALIZE tab
+
+The GENERALIZE room visualizes preregistered training-only mask selection, independent validation and held-out source pairs, an unseen dense source family and a fixed intervention-sector shift. It compares selected policies against fixed first-k masks and a post-hoc test oracle (not permitted to influence selection). `src/generalization-model.mjs` and `../phimirrorhex/generalization.py` are independently compared in CI.
