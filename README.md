@@ -2,7 +2,7 @@
 
 > **As Above, So Below. Coherence Through Symmetry.**
 
-**Φ-Mirror Hex E1–E10** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
+**Φ-Mirror Hex E1–E11** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
 
 The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edges, 12 triangular faces). The *logical* verification architecture is deliberately different from its geometry:
 
@@ -234,3 +234,25 @@ cd web && npm test && npm run build
 ```
 
 See [E10 frozen protocol](docs/E10_CAUSAL_GENERALIZATION.md). All results remain synthetic and non-authorizing.
+
+## E11 · Replication & Failure Ledger
+
+E11 preserves the **14 trained E10 sensor policies**, then repeats held-out tests across **five preregistered new synthetic seeds** (1101–1105), with **48 counterposed pairs per seed** (24 sparse, 24 dense), and all **four E10 intervention controls**.
+
+- **No reselection or retraining:** E10 training masks and the detection threshold are frozen.
+- **Matched first-k baseline:** compare detection counts at identical channel count and readout on each seeded synthetic population.
+- **280 comparison cells:** 14 policies × 4 interventions × 5 seeds, keeping sparse and dense strata.
+- **Failure evidence:** all cells where the selected mask loses to the simple baseline are retained, not hidden by averages.
+- **Worst-case and replication range:** selected mean/min/max, win/tie/loss and worst signed difference across the five seeds. These are **descriptive ranges, not confidence intervals**.
+- **Negative controls:** no-coupling and empty-sensor masks must remain blind.
+- **Read-only live REPLICATE tab:** interactive comparisons, per-seed records, strata and clickable failure ledger.
+- Full independent Python/JS parity with frozen SHA-256 reproducibility receipts in CI.
+
+```bash
+python -m phimirrorhex --mode replicate --output e11-replication-fixture.json
+node tests/check-replication-parity.mjs e11-replication-fixture.json
+python -m pytest -q
+cd web && npm test && npm run build
+```
+
+See [E11 frozen protocol](docs/E11_REPLICATION_FAILURE_LEDGER.md). No live sensors, consciousness claims, external agents or real-world inference are involved.

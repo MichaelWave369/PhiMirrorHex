@@ -17,11 +17,12 @@ from .adaptive import adaptive_benchmark
 from .robustness import robustness_benchmark
 from .frontier import frontier_report
 from .generalization import generalization_report
+from .replication import replication_report
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="PhiMirrorHex deterministic research tools")
-    parser.add_argument("--mode", choices=("e1", "e2", "e2-bridge", "vessel", "vessel-fixtures", "gears", "gears-fixtures", "coherence", "adaptive", "robustness", "frontier", "generalize"), default="e1")
+    parser.add_argument("--mode", choices=("e1", "e2", "e2-bridge", "vessel", "vessel-fixtures", "gears", "gears-fixtures", "coherence", "adaptive", "robustness", "frontier", "generalize", "replicate"), default="e1")
     parser.add_argument("--budget", type=int, choices=FIBONACCI_BUDGETS, default=144)
     parser.add_argument("--seed", type=int, default=369)
     parser.add_argument("--steps", type=int, default=24)
@@ -43,6 +44,8 @@ def main() -> None:
         report = series if args.mode == "e2" else readonly_envelope(series, args.target)
     elif args.mode == "vessel":
         report = vessel_report(args.probe_layer, args.gain, args.observer_depth)
+    elif args.mode == "replicate":
+        report = replication_report()
     elif args.mode == "generalize":
         report = generalization_report()
     elif args.mode == "frontier":
