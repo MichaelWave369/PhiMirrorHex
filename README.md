@@ -138,3 +138,21 @@ node tests/check-gears-parity.mjs e5-gears-fixture.json
 ```
 
 See [E5 frozen protocol](docs/E5_NESTED_GEAR_COUPLING.md). This remains a **finite constructed toy**. Neither Φ nor Fibonacci is necessary for the separation, and no human, physiological, physical, model or consciousness measurement is claimed.
+
+## E6 · Coherence Across Scales
+
+E6 finally asks a testable version of the golden-ratio question: **does φ weighting have predictive value compared with equal or other six-scale weights?** In a frozen benchmark, five independent *engineered* worlds (equal, two φ orientations, center-weighted, alternating) each supply 128 validation and 128 held-out synthetic examples. All five candidate schemes read the same six normalized scale inputs and perform the same number of weighted contributions.
+
+- Model choice is frozen on **validation seed 202** before scoring on **held-out seed 203**.
+- Full MAE/RMSE results for every candidate in every world, plus label-shift negative controls.
+- Equal weighting is expected to win when equal weighting generates the ground truth; a matching φ scheme wins in a φ-generated world **by construction**. This is a benchmark sanity check, not evidence of universal optimality.
+- Python and independently written JavaScript reports are compared in CI with numerical tolerance. The **COHERENCE** React tab shows all five regimes, model rankings, ring weights and test examples.
+- Synthetic/SIMULATED provenance and no authority, human data or consciousness claims.
+
+```bash
+python -m phimirrorhex --mode coherence --output e6-coherence-fixture.json
+node tests/check-coherence-parity.mjs e6-coherence-fixture.json
+cd web && npm test && npm run build
+```
+
+See [E6 frozen protocol](docs/E6_COHERENCE_BENCHMARK.md).
