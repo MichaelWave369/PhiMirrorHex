@@ -1,0 +1,51 @@
+.cal-page{padding:16px 0 30px}.cal-hero{display:grid;grid-template-columns:1.35fr .65fr;gap:22px;align-items:center;padding:28px 12px 36px}
+.cal-hero h2{font-size:clamp(43px,5vw,72px);letter-spacing:-.06em;line-height:1.09;margin:17px 0}
+.cal-hero h2 em{font-style:normal;color:#86e3e3}.cal-hero p{color:#acc5d1;font-size:15px;line-height:1.75;max-width:770px}
+.cal-chips{display:flex;flex-wrap:wrap;gap:8px}.cal-chips span{font-size:9px;letter-spacing:.1em;color:#acd0d7;border:1px solid #426272;border-radius:5px;padding:8px;font-weight:800}
+.cal-hero-aside{border:1px solid #406376;background:linear-gradient(140deg,#1b374a,#101d2d);border-radius:11px;padding:25px;display:grid;gap:12px}
+.cal-hero-aside small{color:#abc2c8;font-size:10px;letter-spacing:.1em}.cal-hero-aside strong{font:500 clamp(26px,2.6vw,38px)/1.33 Georgia,serif;color:#e4cfa6}
+.cal-hero-aside strong em{font-style:normal;color:#7fdfd0}.cal-hero-aside p{font-size:12px;margin:0}
+.cal-stats,.cal-refusal-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:17px}
+.cal-stat{min-width:0;display:grid;gap:8px;padding:17px;background:linear-gradient(145deg,#173044,#0e1f2d);border:1px solid #34556a;border-top:2px solid #82c8cb;border-radius:8px}
+.cal-stat small{color:#a0bdca;font-size:10px;letter-spacing:.09em;font-weight:800}.cal-stat strong{color:#edf3ed;font-size:clamp(22px,2.6vw,34px);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.cal-stat span{color:#8fabbc;font-size:10px}.cal-control-panel,.cal-main,.cal-refusal,.cal-failures{margin-bottom:17px}
+.cal-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;padding:23px 25px 19px}
+.cal-controls label{display:block;font-size:12px;color:#b9d1da;font-weight:750;margin-bottom:13px}.cal-controls label b{color:#8eebe0}
+.cal-controls select{width:100%;padding:11px;background:#17384b;border:1px solid #4d7284;border-radius:6px;color:#eaf2f2}
+.cal-mask-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px;margin:0 25px 23px}
+.cal-mask-summary>div{display:grid;gap:7px;background:#122b3d;border:1px solid #33566a;padding:14px;border-radius:7px}
+.cal-mask-summary small{font-size:10px;letter-spacing:.07em;color:#a5c0cd;font-weight:800}
+.cal-mask-summary strong{font-size:18px;color:#e7d1a3;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.cal-main{display:grid;grid-template-columns:1fr 1fr;gap:17px}.cal-body{padding:23px 24px}
+.cal-body>p{color:#96b1bc;font-size:12px;line-height:1.75}
+.cal-scenario-list{display:grid;gap:8px}.cal-scenario-list button{display:grid;gap:6px;text-align:left;background:#112d40;color:#e2f0f1;border:1px solid #345669;border-radius:7px;padding:14px}
+.cal-scenario-list button.active{background:#285367;border-color:#80d8de}
+.cal-scenario-list b{font-size:13px}.cal-scenario-list small{font-size:9px;letter-spacing:.08em;color:#9cb8c4}
+.cal-seed-list{display:flex;gap:6px;flex-wrap:wrap;margin:19px 0}.cal-seed-list button{border:1px solid #3b5b6e;background:#172f43;color:#c1d7dd;border-radius:6px;padding:9px;font-size:10px}
+.cal-seed-list button.active{background:#2d5f72;border-color:#89e1e5;color:#f0f7f4}
+.cal-bar{margin:5px 0 19px}.cal-bar>div:first-child{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:#acc5d1;margin-bottom:8px}
+.cal-bar strong{color:#ecf1ef;font-variant-numeric:tabular-nums}.cal-track{background:#2a4456;height:9px;border-radius:8px;overflow:hidden}
+.cal-track>div{height:100%;border-radius:8px}
+.cal-exposure{display:grid;grid-template-columns:1fr 1fr;gap:11px;padding-top:17px;border-top:1px solid #31516a}
+.cal-exposure>div{background:#132c3d;border-radius:7px;padding:13px;display:grid;gap:8px}
+.cal-exposure small{color:#98b5be;font-size:9px}.cal-exposure strong{font-size:23px;color:#e8c79d}
+.cal-refusal-inner{padding:24px}.cal-refusal-grid{grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:20px}
+.cal-receipts{display:grid;gap:8px}.cal-receipts h3{font-size:15px}
+.cal-receipts>div{display:grid;grid-template-columns:100px 1fr 1.5fr;gap:12px;align-items:center;background:#122c3f;border:1px solid #33566a;border-radius:7px;padding:12px;color:#adc6d0;font-size:11px}
+.cal-receipts strong{color:#a7e9cd}.cal-receipts .cal-abstained{border-color:#916f4e}.cal-receipts .cal-abstained strong{color:#eab48a}
+.cal-receipts>p{font-size:11px;color:#98b1bf}
+.cal-failure-inner{padding:23px}.cal-failure-inner label{display:flex;gap:11px;align-items:center;color:#aec8d3;font-size:12px;margin-bottom:16px}
+.cal-failure-list{display:grid;gap:8px;max-height:510px;overflow-y:auto;scrollbar-width:thin}
+.cal-failure-list button{display:grid;grid-template-columns:70px 70px 1fr 1fr 1fr;gap:10px;background:#102a3b;border:1px solid #375768;color:#e5eff0;padding:13px;text-align:left;align-items:center;border-radius:7px}
+.cal-failure-list button:hover{background:#22465b}.cal-failure-list span{display:grid;gap:5px}.cal-failure-list b{font-size:11px}
+.cal-failure-list small{font-size:9px;color:#95aeba}.cal-failure-list>p{color:#aec3cc;font-size:12px}
+.cal-claim{border:1px solid #696046;background:#2f2d22ad;border-radius:10px;padding:22px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.cal-claim b{font-size:14px;color:#ead6ac}.cal-claim p{font-size:12px;color:#c0c5b8;line-height:1.8;max-width:1050px}
+.cal-claim a{color:#abe0e2;text-decoration:underline;text-underline-offset:4px;font-size:11px}
+.cal-notice{position:fixed;bottom:20px;right:20px;background:#1c4858;color:#e9f2ef;border:1px solid #79afba;padding:14px;border-radius:8px;z-index:99}
+@media(max-width:1150px){.cal-hero,.cal-main{grid-template-columns:1fr}.cal-stats,.cal-mask-summary{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:800px){.cal-controls{grid-template-columns:1fr}.cal-failure-list button{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:520px){.cal-hero{padding:15px 0}.cal-hero h2{font-size:42px}.cal-hero-aside{padding:16px}
+.cal-stat{padding:12px}.cal-stat strong{font-size:25px}.cal-controls,.cal-body,.cal-refusal-inner,.cal-failure-inner{padding:15px}
+.cal-mask-summary{margin:0 15px 15px}.cal-refusal-grid{grid-template-columns:1fr}.cal-receipts>div{grid-template-columns:1fr 1fr;gap:6px}
+.cal-failure-list button{grid-template-columns:1fr 1fr}.cal-exposure strong{font-size:20px}}
