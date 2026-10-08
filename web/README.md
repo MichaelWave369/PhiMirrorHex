@@ -91,3 +91,7 @@ Compare frame-local 1/3, 2/3 and 3/3 quorums of three correlated synthetic E15 o
 ## E17 OUT-OF-FAMILY tab
 
 Three frozen E16 quorums tested on 12 *new* synthetic procedural streams from a different LCG32 generator with correlated noise, outliers, transients, and sustained shifts. It shows frame-level votes, null control warnings, delays, abstentions, and failure evidence with synthetic-only receipt export. Independent Python/JavaScript full parity is part of CI. The three Keyholes still share each stream and cannot be described as independent witnesses.
+
+## E18 PROSPECTIVE tab
+
+Discloses retrospective E17 development use, weighted quorum selection, and fixed selected policy before showing twelve new E18 synthetic holdout streams. All three original quorum rules are evaluated and all false alarms, persistent misses, low coverage and abstentions are reported. Per-frame Python/JavaScript parity is checked in GitHub Actions; no model or device access is authorized.

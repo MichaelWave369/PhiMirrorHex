@@ -2,7 +2,7 @@
 
 > **As Above, So Below. Coherence Through Symmetry.**
 
-**Φ-Mirror Hex E1–E17** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
+**Φ-Mirror Hex E1–E18** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
 
 The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edges, 12 triangular faces). The *logical* verification architecture is deliberately different from its geometry:
 
@@ -369,3 +369,20 @@ cd web && npm test && npm run build
 ```
 
 See [E17 frozen protocol](docs/E17_OUT_OF_FAMILY_CONSENSUS.md). This is finite simulation stress testing, not real-world physical/biological evidence, consciousness measurement, or agent action permission.
+
+## E18 · Frozen Quorum Selection & Prospective Audit
+
+E18 reuses **already observed E17 test results as clearly disclosed retrospective development evidence**, selects one of the frozen E16 quorum rules with a declared 5×misses + 4×false-alarms + 2×low-coverage loss function and explicit abstention tie breaks, and **locks the selection before E18 outcomes are evaluated**. E17 was not originally preregistered as training data. All three quorum rules are still evaluated on E18; no new winner is selected from the test.
+
+The new sealed study uses **12 new 96-frame streams (seeds 4101–4112)** from a counter-addressed mix32 generator distinct from E17's LCG32. Six families include independent and highly correlated stationary controls, lagged step and ramp changes, four-frame transients with additional sensor outages, and outlier-driven steps. Every **36 quorum/stream cell** and all **3,456 frame-level votes/abstentions** appear in independent Python/JS fixtures. All false alarms, misses and low-coverage cases are retained in the failure ledger, with a toy-only descriptive gate that **never grants execution authority**.
+
+The new **PROSPECTIVE** React tab shows the historical E17 selection receipts and chosen frozen rule, compares all three quorums on E18's new streams, and lets you inspect CUSUM traces, data failures, temporal noise controls and all losing cases.
+
+```bash
+python -m phimirrorhex --mode prospective-audit --output e18-prospective-audit-fixture.json
+node tests/check-prospective-audit-parity.mjs e18-prospective-audit-fixture.json
+python -m pytest -q
+cd web && npm test && npm run build
+```
+
+See [E18 frozen audit protocol](docs/E18_PROSPECTIVE_QUORUM_AUDIT.md). All observations remain programmed synthetic noise. This is not independent physical/biological replication, consciousness measurement, statistical certification or agent autonomy.
