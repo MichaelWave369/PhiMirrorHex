@@ -15,7 +15,7 @@ __all__ = [
     "ABOVE", "BELOW", "FIBONACCI_BUDGETS", "PHI",
     "audit_pairs", "bipyramid", "build_graph", "coherence",
 ]
-__version__ = "0.6.0"
+__version__ = "0.7.0"
 
 from .simulation import simulate_frame, simulate_series, verify_series
 from .bridges import readonly_envelope
@@ -30,3 +30,6 @@ __all__ += ["gear_report"]
 
 from .coherence_bench import benchmark
 __all__ += ["benchmark"]
+
+from .adaptive import adaptive_benchmark
+__all__ += ["adaptive_benchmark"]

@@ -13,7 +13,7 @@ The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edg
 - A candidate Φ-weighted coherence score can be compared against non-Φ baselines.
 - Toy cancellation controls demonstrate a limitation of aggregate-only memory, **not** a claim of general AI improvement.
 
-**Status:** E1 foundation merged; E2 deterministic synthetic simulation under review. These quantities are design choices and combinatorial identities, not evidence of a physical law, universal optimality, consciousness, or successful integration with other projects.
+**Status:** E1–E6 merged; E7 adaptive coherence under review. These quantities are design choices and combinatorial identities, not evidence of a physical law, universal optimality, consciousness, or successful integration with other projects.
 
 ## Quick start
 
@@ -156,3 +156,23 @@ cd web && npm test && npm run build
 ```
 
 See [E6 frozen protocol](docs/E6_COHERENCE_BENCHMARK.md).
+
+## E7 · Adaptive Nested Coherence
+
+The **ADAPTIVE** React tab compares five six-scale model initializations (equal, φ-inner, φ-outer, center, alternating), each using the **same exponentiated-gradient learning rule, six parameters, 128 training updates, and identical synthetic inputs**. Train seed **201**, validation seed **202**, held-out test seed **203**.
+
+- Frozen learning rate η=2.0; one online training pass.
+- Model selection occurs on validation MAE **only**; all test metrics are reported.
+- Frozen initial profiles are descriptive no-training baselines, explicitly not compute-matched to adaptive training.
+- Label-shift negative control retrains the selected initialization with the **same 128 updates**.
+- Independent **E5 Keyhole receipt** confirms a constructed hidden-information arrival at frame 10 and coarse reveal at frame 12, but **is never a training feature**.
+- Full Python/JavaScript parity tests, six ring-weight trajectory views and synthetic receipt export.
+
+```bash
+python -m phimirrorhex --mode adaptive --output e7-adaptive-fixture.json
+node tests/check-adaptive-parity.mjs e7-adaptive-fixture.json
+python -m pytest -q
+cd web && npm test && npm run build
+```
+
+See [E7 frozen protocol](docs/E7_ADAPTIVE_NESTED_COHERENCE.md). Any accuracy advantage applies only to these programmed synthetic worlds; **there is no φ optimality, biological or consciousness claim**.

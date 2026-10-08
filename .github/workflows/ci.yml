@@ -45,6 +45,10 @@ jobs:
         run: python -m phimirrorhex --mode coherence --output e6-coherence-fixture.json
       - name: Verify Python / JavaScript held-out benchmark parity
         run: node tests/check-coherence-parity.mjs e6-coherence-fixture.json
+      - name: Generate E7 adaptive learning benchmark
+        run: python -m phimirrorhex --mode adaptive --output e7-adaptive-fixture.json
+      - name: Verify independent Python and JavaScript adaptive learning
+        run: node tests/check-adaptive-parity.mjs e7-adaptive-fixture.json
       - name: Upload reproducibility receipt
         uses: actions/upload-artifact@v4
         with:
@@ -55,3 +59,4 @@ jobs:
             e4-vessel-fixture.json
             e5-gears-fixture.json
             e6-coherence-fixture.json
+            e7-adaptive-fixture.json

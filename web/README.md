@@ -47,3 +47,7 @@ The **GEARS** tab renders the frozen E5 synthetic delayed-conveyor witness with 
 ## E6 COHERENCE tab
 
 `src/CoherenceLab.jsx` compares equal, φ-inner, φ-outer, center, and alternating weighting schemes against five deliberately **engineered** synthetic ground-truth regimes, selecting on validation and reporting held-out error. Nothing is connected to live models, physics or biometric inputs. Core `src/coherence-model.mjs` mirrors the Python reference and passes CI cross-language parity tests.
+
+## E7 ADAPTIVE tab
+
+The E7 lab compares five six-weight positive-simplex online learners with matched training budgets on engineered, split-isolated worlds. `src/adaptive-model.mjs` is independently tested against the Python reference, and `src/AdaptiveLab.jsx` presents training trajectories, holdout scores and the shifted-label negative control. The E5 Keyhole causal receipt is **read-only** and cannot influence training or grant authority.
