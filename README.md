@@ -2,7 +2,7 @@
 
 > **As Above, So Below. Coherence Through Symmetry.**
 
-**Φ-Mirror Hex E1–E11** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
+**Φ-Mirror Hex E1–E12** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
 
 The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edges, 12 triangular faces). The *logical* verification architecture is deliberately different from its geometry:
 
@@ -256,3 +256,20 @@ cd web && npm test && npm run build
 ```
 
 See [E11 frozen protocol](docs/E11_REPLICATION_FAILURE_LEDGER.md). No live sensors, consciousness claims, external agents or real-world inference are involved.
+
+## E12 · Sensor Economy & Prospective Transfer Gate
+
+E12 asks whether a **new sensor policy optimized for both known and shifted probes** transfers across genuinely separate synthetic populations without further tuning. For each of seven sensor budgets and two Keyhole readouts, enumerate eligible masks on **development seeds 1201/1202/1203**, maximize the *worst* of known-probe and shifted-probe pooled detection counts, and break ties by total count and lowest mask integer.
+
+Freeze the selected mask, report a separate **validation seed 1204**, then evaluate on five sealed prospective seeds **1301–1305** (48 constructed pairs each, half sparse, half dense). Compare against **unchanged E10 training mask** and the **first-k fixed mask** with identical sensor budgets. Retain complete failure evidence across 14 × 4 × 5 = **280** scenario comparisons.
+
+The **TRANSFER** React tab displays the development-selected mask, controls, three-way observer scores, dense/sparse breakdowns, worst prospective margins and a strictly **descriptive** two-probe transfer gate. No pass grants execution or model authority; no human or physical sensor measurements are used.
+
+```bash
+python -m phimirrorhex --mode transfer --output e12-transfer-fixture.json
+node tests/check-transfer-parity.mjs e12-transfer-fixture.json
+python -m pytest -q
+cd web && npm test && npm run build
+```
+
+See [E12 frozen protocol](docs/E12_SENSOR_TRANSFER_GATE.md).

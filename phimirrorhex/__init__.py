@@ -15,7 +15,7 @@ __all__ = [
     "ABOVE", "BELOW", "FIBONACCI_BUDGETS", "PHI",
     "audit_pairs", "bipyramid", "build_graph", "coherence",
 ]
-__version__ = "0.11.0"
+__version__ = "0.12.0"
 
 from .simulation import simulate_frame, simulate_series, verify_series
 from .bridges import readonly_envelope
@@ -45,3 +45,6 @@ __all__ += ["generalization_report"]
 
 from .replication import replication_report
 __all__ += ["replication_report"]
+
+from .transfer import transfer_report
+__all__ += ["transfer_report"]

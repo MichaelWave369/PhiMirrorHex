@@ -54,12 +54,6 @@ def _chosen_mask(
     }
 
 
-def _score_population(rows: list[dict], masks: dict[str, int],
-                      scenario: str, seed: int) -> dict:
-    # Caller supplies one frozen sensor budget and readout.
-    raise RuntimeError("Call _score below with the observer readout")
-
-
 def _score(rows: list[dict], masks: dict[str, int],
            readout: str, scenario: str, seed: int) -> dict:
     counts = {name: _count(rows, mask, readout, scenario)

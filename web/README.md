@@ -67,3 +67,7 @@ The GENERALIZE room visualizes preregistered training-only mask selection, indep
 ## E11 REPLICATE tab
 
 A complete synthetic five-seed OOD replication and failure ledger, `src/ReplicationLab.jsx` compares frozen E10 training-selected Keyhole masks against identical-budget deterministic baseline masks. It retains per-seed, per-family and per-intervention counts, min/max outcomes and all losing runs, with read-only JSON exports. Python and JS engines are independently parity-tested in CI.
+
+## E12 TRANSFER tab
+
+The TRANSFER research room compares maximin-development Keyhole masks against unchanged E10 and first-k baselines across five prospectively isolated synthetic seeds. It includes a strictly non-authorizing transfer criterion, intervention controls, per-family metrics, and a full failure ledger. `src/transfer-model.mjs` is independently parity-tested against `../phimirrorhex/transfer.py` in CI.
