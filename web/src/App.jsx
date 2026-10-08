@@ -15,6 +15,7 @@ import DriftLab from './DriftLab.jsx';
 import SequentialLab from './SequentialLab.jsx';
 import ConsensusLab from './ConsensusLab.jsx';
 import ConsensusTransferLab from './ConsensusTransferLab.jsx';
+import ProspectiveAuditLab from './ProspectiveAuditLab.jsx';
 
 const REPO = 'https://github.com/MichaelWave369/PhiMirrorHex';
 const SCHEMA = 'phimirrorhex.e3.browser-snapshot.v1';
@@ -200,7 +201,7 @@ export default function App() {
     <header className="topbar">
       <div className="brand-lockup"><div className="brand-emblem" aria-hidden="true">Φ</div><div><div className="brand-name">MIRROR<span>HEX</span></div><div className="brand-subtitle">FIELD RESEARCH LAB · E3</div></div></div>
       <nav aria-label="Research lab sections" className="top-nav">
-        {['LAB','MATRIX','VESSEL','GEARS','COHERENCE','ADAPTIVE','ROBUSTNESS','FRONTIER','GENERALIZE','REPLICATE','TRANSFER','CALIBRATE','DRIFT','SEQUENCE','CONSENSUS','OUT-OF-FAMILY','METHOD'].map(name=><button key={name} onClick={()=>setTab(name)} aria-current={tab===name?'page':undefined} className={tab===name?'active':''}>{name}</button>)}
+        {['LAB','MATRIX','VESSEL','GEARS','COHERENCE','ADAPTIVE','ROBUSTNESS','FRONTIER','GENERALIZE','REPLICATE','TRANSFER','CALIBRATE','DRIFT','SEQUENCE','CONSENSUS','OUT-OF-FAMILY','PROSPECTIVE','METHOD'].map(name=><button key={name} onClick={()=>setTab(name)} aria-current={tab===name?'page':undefined} className={tab===name?'active':''}>{name}</button>)}
       </nav>
       <a href={REPO} className="repository-link" target="_blank" rel="noreferrer">GITHUB <SmallIcon name="link"/></a>
     </header>
@@ -302,11 +303,12 @@ export default function App() {
       {tab==='SEQUENCE'&&<SequentialLab/>}
       {tab==='CONSENSUS'&&<ConsensusLab/>}
       {tab==='OUT-OF-FAMILY'&&<ConsensusTransferLab/>}
+      {tab==='PROSPECTIVE'&&<ProspectiveAuditLab/>}
       {tab==='METHOD'&&<MethodsView/>}
 
       <section className="truth-strip"><span className="truth-icon">ⓘ</span><div><b>A research instrument, not an oracle.</b><p>Exact topology, synthetic signals. No live agent data, external model calls, autonomous actions, or independently proven Φ/Fibonacci optimization. All integration claims require matched baselines, replay, and permissioned observability.</p></div></section>
     </main>
-    <footer><span>Φ MIRRORHEX · ENTER THE FIELD</span><span>CAPABILITY ≠ AUTHORITY · E17 OUT-OF-FAMILY TRANSFER</span><a href={REPO} target="_blank" rel="noreferrer">SOURCE CODE ↗</a></footer>
+    <footer><span>Φ MIRRORHEX · ENTER THE FIELD</span><span>CAPABILITY ≠ AUTHORITY · E18 PROSPECTIVE QUORUM AUDIT</span><a href={REPO} target="_blank" rel="noreferrer">SOURCE CODE ↗</a></footer>
     {toast&&<div className="toast" role="status">{toast}</div>}
   </div>;
 }
