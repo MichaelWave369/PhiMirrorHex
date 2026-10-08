@@ -75,3 +75,7 @@ The TRANSFER research room compares maximin-development Keyhole masks against un
 ## E13 CALIBRATE tab
 
 Displays calibrated noise-only detection thresholds, prospective false-alarm and signal counts, fault-triggered abstentions, mask/coverage metrics and complete synthetic failure evidence. `src/calibration-model.mjs` is parity-tested against `../phimirrorhex/calibration.py`, and all earlier rooms remain available.
+
+## E14 DRIFT tab
+
+The E14 monitor uses frozen E13 masks/thresholds on a null-only synthetic monitor population. If it flags excess false alarms, a separate shadow dataset produces a candidate threshold. Both frozen and candidate thresholds are scored on sealed cases, with faults, abstentions and every failure explicitly logged. No threshold is adopted, no external data read, and no agent action authority granted. Python/JS exact-parity receipts are part of CI.

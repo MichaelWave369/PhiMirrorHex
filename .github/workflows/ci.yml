@@ -73,6 +73,10 @@ jobs:
         run: python -m phimirrorhex --mode calibrate --output e13-calibration-fixture.json
       - name: Verify independent Python and JavaScript E13 calibration parity
         run: node tests/check-calibration-parity.mjs e13-calibration-fixture.json
+      - name: Generate E14 sealed drift and shadow calibration ledger
+        run: python -m phimirrorhex --mode drift --output e14-drift-fixture.json
+      - name: Verify E14 independent Python JavaScript monitor and failure parity
+        run: node tests/check-drift-parity.mjs e14-drift-fixture.json
       - name: Upload reproducibility receipt
         uses: actions/upload-artifact@v4
         with:
@@ -90,3 +94,4 @@ jobs:
             e11-replication-fixture.json
             e12-transfer-fixture.json
             e13-calibration-fixture.json
+            e14-drift-fixture.json

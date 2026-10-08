@@ -2,7 +2,7 @@
 
 > **As Above, So Below. Coherence Through Symmetry.**
 
-**Φ-Mirror Hex E1–E13** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
+**Φ-Mirror Hex E1–E14** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
 
 The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edges, 12 triangular faces). The *logical* verification architecture is deliberately different from its geometry:
 
@@ -295,3 +295,20 @@ cd web && npm test && npm run build
 ```
 
 See [E13 frozen protocol](docs/E13_CALIBRATION_REFUSAL.md).
+
+## E14 · Drift Sentinel & Shadow Recalibration
+
+E14 starts with **frozen E13 sensor masks and calibration thresholds**, then tests whether false-alarm monitoring detects a change in synthetic observation noise without touching those thresholds. Three predeclared regimes: nominal amplitude **0.018**, noise shift **0.054**, recovered **0.018**. Each uses **three disjoint 48-case populations**: null-only monitor seeds 1601–1603, independent shadow calibration seeds 1701–1703, and sealed test seeds 1801–1803.
+
+If the frozen monitor's null false-alarm fraction exceeds **10%**, it outputs **ABSTAIN_AND_EVALUATE_SHADOW**. A proposed threshold is fit on an independent null-only shadow population, **never deployed**, then evaluated alongside the unchanged E13 floor on the sealed test population. Zero sensors and declared sensor faults are explicit negative controls; false-alarm breaches, monitor misses, missed signals, coverage and all failures are preserved.
+
+All **14 sensor policies × 3 environments = 42 cells** are reproducible in independent Python and JavaScript engines, with a full ledger and SHA-256 source receipts in CI. The live React site adds a **DRIFT** research tab to explore the monitor, candidate, sealed results and failure reasons.
+
+```bash
+python -m phimirrorhex --mode drift --output e14-drift-fixture.json
+node tests/check-drift-parity.mjs e14-drift-fixture.json
+python -m pytest -q
+cd web && npm test && npm run build
+```
+
+See [E14 frozen protocol](docs/E14_DRIFT_SHADOW.md). SIMULATED only; no self-recalibrating deployed sensor, biological inference or external action permission.
