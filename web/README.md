@@ -87,3 +87,7 @@ Visualizes one-shot change alarms on 96-frame synthetic noise streams under four
 ## E16 CONSENSUS tab
 
 Compare frame-local 1/3, 2/3 and 3/3 quorums of three correlated synthetic E15 observers. Shows frozen masks/thresholds, frame-by-frame votes and refusals, overlap/co-vote diagnostics and all failed streams. This is not independent validation; E15 held-out streams are reused. Independent `src/consensus-model.mjs` and `../phimirrorhex/consensus.py` must match in CI.
+
+## E17 OUT-OF-FAMILY tab
+
+Three frozen E16 quorums tested on 12 *new* synthetic procedural streams from a different LCG32 generator with correlated noise, outliers, transients, and sustained shifts. It shows frame-level votes, null control warnings, delays, abstentions, and failure evidence with synthetic-only receipt export. Independent Python/JavaScript full parity is part of CI. The three Keyholes still share each stream and cannot be described as independent witnesses.
