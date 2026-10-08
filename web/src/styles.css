@@ -321,3 +321,8 @@ footer a { color: #abc5d2; }
 .top-nav{min-width:0;overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-width:thin}
 .top-nav button{flex:0 0 auto;white-space:nowrap}
 @media(max-width:1700px){.top-nav button{font-size:9px;padding-left:7px;padding-right:7px}}
+
+/* E12: preserve all twelve research tabs with accessible horizontal scrolling. */
+.top-nav{min-width:0;overflow-x:auto;scrollbar-width:thin;overscroll-behavior-inline:contain}
+.top-nav button{flex:0 0 auto;white-space:nowrap}
+@media(max-width:1750px){.top-nav button{font-size:9px;padding-left:6px;padding-right:6px}}

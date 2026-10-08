@@ -65,6 +65,10 @@ jobs:
         run: python -m phimirrorhex --mode replicate --output e11-replication-fixture.json
       - name: Verify Python and JavaScript E11 full-ledger parity
         run: node tests/check-replication-parity.mjs e11-replication-fixture.json
+      - name: Generate E12 sealed sensor economy transfer benchmark
+        run: python -m phimirrorhex --mode transfer --output e12-transfer-fixture.json
+      - name: Verify Python and JavaScript E12 transfer gate and failure parity
+        run: node tests/check-transfer-parity.mjs e12-transfer-fixture.json
       - name: Upload reproducibility receipt
         uses: actions/upload-artifact@v4
         with:
@@ -80,3 +84,4 @@ jobs:
             e9-frontier-fixture.json
             e10-generalization-fixture.json
             e11-replication-fixture.json
+            e12-transfer-fixture.json
