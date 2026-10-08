@@ -36,7 +36,7 @@ def test_fresh_noise_generator_and_prespecified_noise_shift():
     assert _amp("burst_null",51)==.054
     assert _amp("burst_null",52)==.018
     assert _amp("lagged_ramp",48)==.018
-    assert _amp("lagged_ramp",80)==.054
+    assert abs(_amp("lagged_ramp",80)-.054)<1e-12
     a,b=_noise(4109,2,"burst_null")
     assert len(a)==len(b)==6
 
