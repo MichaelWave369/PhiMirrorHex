@@ -2,7 +2,7 @@
 
 > **As Above, So Below. Coherence Through Symmetry.**
 
-**Φ-Mirror Hex E1–E15** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
+**Φ-Mirror Hex E1–E16** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
 
 The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edges, 12 triangular faces). The *logical* verification architecture is deliberately different from its geometry:
 
@@ -331,3 +331,24 @@ cd web && npm test && npm run build
 ```
 
 See [E15 frozen protocol](docs/E15_SEQUENTIAL_CHANGE.md).
+
+## E16 · Correlated Keyhole Consensus & Refusal
+
+E16 compares three fixed E15 observers on the **same eight sealed synthetic 96-frame streams**. Each observer retains its E15 trained CUSUM threshold and mask: budgets **2 identity-max, 3 masked-sum, 4 identity-max**. No voting rule or threshold is selected using test outcomes.
+
+- Compare **1-of-3, 2-of-3 and 3-of-3** frame-local voting, with one-shot group alerts.
+- A Keyhole votes YES only if it is available **at the current frame** and its CUSUM exceeds its unchanged E15 threshold.
+- If fewer than q witnesses have usable readings, the group **ABSTAINS**. Missing votes never count as successful negative evidence.
+- All **24 policy/stream cells** include first-alarm time, change delay, false alarms, missed sustained changes, coverage and explicit refusals, with full 96-frame traces.
+- Publish **sensor-mask Jaccard overlaps** and conditional **co-vote** counts. The three observers share synthetic noise and often overlap channels. **Their votes are correlated, not independent confirmations.**
+- Every failure retained, plus independent Python↔JavaScript cross-language parity in CI.
+- New read-only **CONSENSUS** React room with quorum selector, all member traces, vote/eligibility breakdown, failure ledger and provenance.
+
+```bash
+python -m phimirrorhex --mode consensus --output e16-consensus-fixture.json
+node tests/check-consensus-parity.mjs e16-consensus-fixture.json
+python -m pytest -q
+cd web && npm test && npm run build
+```
+
+See [E16 frozen protocol](docs/E16_CORRELATED_CONSENSUS.md). **This reuses E15 test streams** as a comparative replay; a new, independent prospective seed series is needed before promoting a rule even within a different simulator. No real physical, consciousness or external agent evidence is claimed.

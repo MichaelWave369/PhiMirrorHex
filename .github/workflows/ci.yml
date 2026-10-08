@@ -81,6 +81,10 @@ jobs:
         run: python -m phimirrorhex --mode sequential --output e15-sequential-fixture.json
       - name: Verify Python and JavaScript E15 sequential frame and failure parity
         run: node tests/check-sequential-parity.mjs e15-sequential-fixture.json
+      - name: Generate E16 correlated Keyhole quorum and refusal ledger
+        run: python -m phimirrorhex --mode consensus --output e16-consensus-fixture.json
+      - name: Verify E16 independent Python JavaScript full quorum parity
+        run: node tests/check-consensus-parity.mjs e16-consensus-fixture.json
       - name: Upload reproducibility receipt
         uses: actions/upload-artifact@v4
         with:
@@ -100,3 +104,4 @@ jobs:
             e13-calibration-fixture.json
             e14-drift-fixture.json
             e15-sequential-fixture.json
+            e16-consensus-fixture.json

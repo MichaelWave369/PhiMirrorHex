@@ -83,3 +83,7 @@ The E14 monitor uses frozen E13 masks/thresholds on a null-only synthetic monito
 ## E15 SEQUENCE tab
 
 Visualizes one-shot change alarms on 96-frame synthetic noise streams under four preregistered regimes and eight sealed seeds. Displays CUSUM development-only limits, step/ramp detection delays, false alarms, misses, explicit fault abstention and full evidence ledger. `src/sequential-model.mjs` is independently parity-tested against `../phimirrorhex/sequential.py`. No real input, no external actions.
+
+## E16 CONSENSUS tab
+
+Compare frame-local 1/3, 2/3 and 3/3 quorums of three correlated synthetic E15 observers. Shows frozen masks/thresholds, frame-by-frame votes and refusals, overlap/co-vote diagnostics and all failed streams. This is not independent validation; E15 held-out streams are reused. Independent `src/consensus-model.mjs` and `../phimirrorhex/consensus.py` must match in CI.
