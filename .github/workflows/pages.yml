@@ -1,0 +1,66 @@
+name: React Lab · GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'web/**'
+      - 'docs/living-hex.mjs'
+      - '.github/workflows/pages.yml'
+  pull_request:
+    paths:
+      - 'web/**'
+      - 'docs/living-hex.mjs'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: phi-mirror-hex-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Verify and build React lab
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install React lab dependencies
+        working-directory: web
+        run: npm install --no-audit --no-fund
+      - name: Run deterministic model smoke tests
+        working-directory: web
+        run: npm test
+      - name: Build Pages production assets
+        working-directory: web
+        run: npm run build
+      - name: Verify site artifact and repository base path
+        run: |
+          test -s web/dist/index.html
+          test -d web/dist/assets
+          grep -q '/PhiMirrorHex/assets/' web/dist/index.html
+      - name: Prepare Pages build
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/dist
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    name: Publish live React lab
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
