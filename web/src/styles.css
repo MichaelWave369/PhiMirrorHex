@@ -300,3 +300,8 @@ footer a { color: #abc5d2; }
   .top-nav { overflow-x: auto; flex-wrap: nowrap; scrollbar-width: thin; }
   .top-nav button { flex: 0 0 auto; min-width: 76px; white-space: nowrap; padding-left: 13px; padding-right: 13px; }
 }
+
+/* E7: seven research tabs; allow horizontal scroll at every width. */
+.top-nav{min-width:0;overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-width:thin;flex-wrap:nowrap}
+.top-nav button{flex-shrink:0;white-space:nowrap}
+@media(max-width:1200px){.top-nav button{padding:0 10px;font-size:10px}}
