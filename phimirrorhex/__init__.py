@@ -15,7 +15,7 @@ __all__ = [
     "ABOVE", "BELOW", "FIBONACCI_BUDGETS", "PHI",
     "audit_pairs", "bipyramid", "build_graph", "coherence",
 ]
-__version__ = "0.15.0"
+__version__ = "0.16.0"
 
 from .simulation import simulate_frame, simulate_series, verify_series
 from .bridges import readonly_envelope
@@ -57,3 +57,6 @@ __all__ += ["drift_report"]
 
 from .sequential import sequential_report
 __all__ += ["sequential_report"]
+
+from .consensus import consensus_report
+__all__ += ["consensus_report"]
