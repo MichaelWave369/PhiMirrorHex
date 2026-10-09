@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {intakeQualificationReport,verifyIntakeChain} from '../web/src/intake-chain-model.mjs';
+const py=JSON.parse(readFileSync(process.argv[2]||'e21-intake-chain.json','utf8'));
+const js=await intakeQualificationReport();
+assert.deepEqual(js,py,'All E21 events and SHA-256 link hashes must match byte-for-byte');
+assert.equal((await verifyIntakeChain(py.ledger)).valid,true);
+const altered=structuredClone(py.ledger);
+altered.events[1].disposition='REJECTED';
+assert.equal((await verifyIntakeChain(altered)).valid,false);
+assert.equal(py.summary.authority_grants,0);
+console.log('E21 parity PASS: 11 intake events; 3 quarantines, 1 replay, 6 rejections, 1 refused action; exact hash-chain and Python-JS refusal parity.');

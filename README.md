@@ -2,7 +2,7 @@
 
 > **As Above, So Below. Coherence Through Symmetry.**
 
-**Φ-Mirror Hex E1–E20** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
+**Φ-Mirror Hex E1–E21** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
 
 The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edges, 12 triangular faces). The *logical* verification architecture is deliberately different from its geometry:
 
@@ -420,3 +420,20 @@ cd web && npm test && npm run build
 ```
 
 See [E20 frozen receiver protocol](docs/E20_GOVERNED_EVIDENCE_RECEIVERS.md). This tests safe handling of synthetic data; it is not authenticated distributed networking or external tool authorization.
+
+## E21 · Untrusted Intake Chain & Replay Defense
+
+E21 extends E19's portable unsigned packet and E20's quarantine-only receiver profiles with a **local in-memory, hash-linked intake ledger**. Every inbound attempt records the claimed packet checksum, receiver, action, result, reason codes, previous link hash and its own canonical SHA-256. It never dispatches actions, updates trusted memory, or connects to NestedBubbleGear, BrainC or SuperPhiVessel.
+
+Valid replay-verified unsigned packets can only be **QUARANTINED_READ_ONLY**. Repeated valid packets within the **same receiver/action/digest scope** are `DUPLICATE_QUARANTINED`; different consumers get separate quarantine records. Caller-supplied digest mismatches, recomputed authority-forgery checksums, altered frames and fabricated signatures are rejected, while an action request is refused. **Eleven frozen qualification cases: 3 quarantines, 1 duplicate, 6 rejections, 1 refused action, 0 authority grants and 0 external calls**. Complete Python/JavaScript model and SHA-256 chain parity is verified in CI.
+
+The React **INTAKE** room displays the whole chain, reason codes, each link hash, optional local JSON chain inspection and export of all failures. The chain is only **self-consistent**, not cryptographically authenticated or tamper-proof to an attacker capable of rehashing the entire history. There is **no cross-session persistence, trusted external anchor, publisher signature, or real installed receiver adapter**.
+
+```bash
+python -m phimirrorhex --mode intake-chain --output e21-intake-chain.json
+node tests/check-intake-chain-parity.mjs e21-intake-chain.json
+python -m pytest -q
+cd web && npm test && npm run build
+```
+
+See [E21 protocol](docs/E21_UNTRUSTED_INTAKE_CHAIN.md). All signals are synthetic; results confer no real physical, cognitive or device authority.
