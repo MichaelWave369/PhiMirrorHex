@@ -107,3 +107,7 @@ Run and inspect a nine-case local quarantine/abstention policy suite for three f
 ## E21 INTAKE tab
 
 Runs 11 local synthetic intake tests with quarantine, replay deduplication, explicitly unauthenticated digest pins and hash-linked audit events. Inspect every disposition, proof-of-self-consistency hash, source limitation and complete failed-evidence case; import an in-memory JSON chain for structural checking and export the full report. No external connections or persistent trust anchors exist. Python and JavaScript CI must reproduce all 11 decisions and hashes.
+
+## E22 CHECKPOINT tab
+
+Local-only simulation of offline chain checkpoints and attack detection. Run eight audit cases, view a known post-checkpoint rewrite blind spot, export separate source-ledger and reference JSON, and compare pasted records without network calls. No trusted anchor, actual signer or durable storage exists. Python and JS CI must exactly match the full eight-case receipt and checksum.

@@ -15,7 +15,7 @@ __all__ = [
     "ABOVE", "BELOW", "FIBONACCI_BUDGETS", "PHI",
     "audit_pairs", "bipyramid", "build_graph", "coherence",
 ]
-__version__ = "0.21.0"
+__version__ = "0.22.0"
 
 from .simulation import simulate_frame, simulate_series, verify_series
 from .bridges import readonly_envelope
@@ -75,3 +75,6 @@ __all__ += ["receive", "receiver_qualification_report"]
 
 from .intake_chain import empty_ledger, intake, verify_chain, intake_qualification_report
 __all__ += ["empty_ledger", "intake", "verify_chain", "intake_qualification_report"]
+
+from .checkpoint import checkpoint, compare_checkpoint, checkpoint_qualification_report
+__all__ += ["checkpoint", "compare_checkpoint", "checkpoint_qualification_report"]
