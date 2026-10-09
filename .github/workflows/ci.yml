@@ -121,6 +121,10 @@ jobs:
         run: python -m phimirrorhex --mode lifecycle --output e25-key-lifecycle.json
       - name: Verify E25 independent Python WebCrypto dual-signature and replay parity
         run: node tests/check-lifecycle-parity.mjs e25-key-lifecycle.json
+      - name: Generate E26 recovery rollback and forged co-anchor qualification
+        run: python -m phimirrorhex --mode recovery --output e26-recovery-qualification.json
+      - name: Verify E26 Python JavaScript recovery and state replay parity
+        run: node tests/check-recovery-parity.mjs e26-recovery-qualification.json
       - name: Upload reproducibility receipt
         uses: actions/upload-artifact@v4
         with:
@@ -150,3 +154,4 @@ jobs:
             e23-witness-qualification.json
             e24-signature-qualification.json
             e25-key-lifecycle.json
+            e26-recovery-qualification.json
