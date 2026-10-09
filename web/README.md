@@ -111,3 +111,7 @@ Runs 11 local synthetic intake tests with quarantine, replay deduplication, expl
 ## E22 CHECKPOINT tab
 
 Local-only simulation of offline chain checkpoints and attack detection. Run eight audit cases, view a known post-checkpoint rewrite blind spot, export separate source-ledger and reference JSON, and compare pasted records without network calls. No trusted anchor, actual signer or durable storage exists. Python and JS CI must exactly match the full eight-case receipt and checksum.
+
+## E23 WITNESSES tab
+
+Shows 11 exact local witness-claim scenarios against the E22 checkpoint. Two copies agreeing and one dissenting yields SPLIT_VIEW_DETECTED; even all three copies agreeing remains unauthenticated. Two explicit blind spots survive. Pure local JSON research report; no external witness network, signatures, custody, authentication or execution authority.

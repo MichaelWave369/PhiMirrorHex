@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {witnessQualificationReport} from '../web/src/witness-model.mjs';
+const py=JSON.parse(readFileSync(process.argv[2]||'e23-witness-qualification.json','utf8'));
+const js=await witnessQualificationReport();
+assert.deepEqual(js,py,'E23 all named local claims, full verdict and SHA256 parity');
+assert.equal(py.summary.split_views,2);
+assert.equal(py.summary.co_rewritten_claims_pass_unauthed,true);
+assert.equal(py.summary.false_authority_promotions,0);
+console.log('E23 PASS: 11 local witness cases, 2 split views, explicit false unanimity blindspots and no trusted authority.');

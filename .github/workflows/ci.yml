@@ -109,6 +109,10 @@ jobs:
         run: python -m phimirrorhex --mode checkpoint --output e22-checkpoint-qualification.json
       - name: Verify E22 independent Python JavaScript rollback fork blindspot parity
         run: node tests/check-checkpoint-parity.mjs e22-checkpoint-qualification.json
+      - name: Generate E23 local witness and split-view qualification
+        run: python -m phimirrorhex --mode witness --output e23-witness-qualification.json
+      - name: Verify E23 complete Python and JavaScript witness decision parity
+        run: node tests/check-witness-parity.mjs e23-witness-qualification.json
       - name: Upload reproducibility receipt
         uses: actions/upload-artifact@v4
         with:
@@ -135,3 +139,4 @@ jobs:
             e20-receiver-qualification.json
             e21-intake-chain.json
             e22-checkpoint-qualification.json
+            e23-witness-qualification.json
