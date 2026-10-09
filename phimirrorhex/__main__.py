@@ -31,11 +31,12 @@ from .intake_chain import intake_qualification_report
 from .checkpoint import checkpoint_qualification_report
 from .witness import witness_qualification_report
 from .signatures import signature_qualification_report
+from .lifecycle import lifecycle_qualification_report
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="PhiMirrorHex deterministic research tools")
-    parser.add_argument("--mode", choices=("e1", "e2", "e2-bridge", "vessel", "vessel-fixtures", "gears", "gears-fixtures", "coherence", "adaptive", "robustness", "frontier", "generalize", "replicate", "transfer", "calibrate", "drift", "sequential", "consensus", "consensus-transfer", "prospective-audit", "portable-evidence", "receiver-qualification", "intake-chain", "checkpoint", "witness", "signed-witness"), default="e1")
+    parser.add_argument("--mode", choices=("e1", "e2", "e2-bridge", "vessel", "vessel-fixtures", "gears", "gears-fixtures", "coherence", "adaptive", "robustness", "frontier", "generalize", "replicate", "transfer", "calibrate", "drift", "sequential", "consensus", "consensus-transfer", "prospective-audit", "portable-evidence", "receiver-qualification", "intake-chain", "checkpoint", "witness", "signed-witness", "lifecycle"), default="e1")
     parser.add_argument("--budget", type=int, choices=FIBONACCI_BUDGETS, default=144)
     parser.add_argument("--seed", type=int, default=369)
     parser.add_argument("--steps", type=int, default=24)
@@ -57,6 +58,8 @@ def main() -> None:
         report = series if args.mode == "e2" else readonly_envelope(series, args.target)
     elif args.mode == "vessel":
         report = vessel_report(args.probe_layer, args.gain, args.observer_depth)
+    elif args.mode == "lifecycle":
+        report = lifecycle_qualification_report()
     elif args.mode == "signed-witness":
         report = signature_qualification_report()
     elif args.mode == "witness":
