@@ -115,3 +115,7 @@ Local-only simulation of offline chain checkpoints and attack detection. Run eig
 ## E23 WITNESSES tab
 
 Shows 11 exact local witness-claim scenarios against the E22 checkpoint. Two copies agreeing and one dissenting yields SPLIT_VIEW_DETECTED; even all three copies agreeing remains unauthenticated. Two explicit blind spots survive. Pure local JSON research report; no external witness network, signatures, custody, authentication or execution authority.
+
+## E24 SIGNATURES tab
+
+Runs 15 fixed local Ed25519 WebCrypto challenge scenarios with public deterministic fixture keys and exact Python parity. It demonstrates valid signature bytes without authenticated people, independent custody, persistent revocation or authority; visibly includes forged unanimous fixture signatures and unprotected suffix rewrites. Requires modern WebCrypto Ed25519, and makes no network calls.

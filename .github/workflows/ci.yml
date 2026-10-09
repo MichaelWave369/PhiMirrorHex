@@ -113,6 +113,10 @@ jobs:
         run: python -m phimirrorhex --mode witness --output e23-witness-qualification.json
       - name: Verify E23 complete Python and JavaScript witness decision parity
         run: node tests/check-witness-parity.mjs e23-witness-qualification.json
+      - name: Generate E24 Ed25519 public-fixture signature qualification
+        run: python -m phimirrorhex --mode signed-witness --output e24-signature-qualification.json
+      - name: Verify E24 independent Python and browser WebCrypto Ed25519 parity
+        run: node tests/check-signature-parity.mjs e24-signature-qualification.json
       - name: Upload reproducibility receipt
         uses: actions/upload-artifact@v4
         with:
@@ -140,3 +144,4 @@ jobs:
             e21-intake-chain.json
             e22-checkpoint-qualification.json
             e23-witness-qualification.json
+            e24-signature-qualification.json

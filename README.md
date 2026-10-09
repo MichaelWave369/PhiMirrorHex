@@ -2,7 +2,7 @@
 
 > **As Above, So Below. Coherence Through Symmetry.**
 
-**Φ-Mirror Hex E1–E23** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
+**Φ-Mirror Hex E1–E24** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
 
 The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edges, 12 triangular faces). The *logical* verification architecture is deliberately different from its geometry:
 
@@ -471,3 +471,20 @@ cd web && npm test && npm run build
 ```
 
 See [E23 protocol](docs/E23_WITNESS_SPLIT_VIEW_AUDIT.md). This is a synthetic research qualification, not independent evidence or a permissions system.
+
+## E24 · Ed25519 Fixture Signatures and Identity Boundary
+
+E24 tests **real Ed25519 signatures** using Python cryptography and standard JavaScript WebCrypto. Deterministic **public fixture private seeds** are included in both sources. They prove signature mechanics, NOT real-world identity, independent witnesses, private key custody or device/agent authority. Anyone reading this repository can forge the test signers.
+
+Fifteen fixed qualification scenarios test valid signatures, signed split views, tampering, signer substitution, missing/duplicate signer IDs, stale epochs, locally revoked keys, repeated sequences, forged auth fields, protected-prefix forks, rollback, publicly re-signed forged unanimity, later suffix edits and incomparable checkpoints. **Every result preserves `authority_granted: false`.** JS/Python full receipt/signature bytes/SHA256 parity is checked by CI.
+
+The new **SIGNATURES** React lab presents each scenario, signature-verification count, split claim groups and explicit blind spots. No signed data is promoted into trusted routing, memory, physics conclusions or tool permissions.
+
+```bash
+python -m phimirrorhex --mode signed-witness --output e24-signature-qualification.json
+node tests/check-signature-parity.mjs e24-signature-qualification.json
+python -m pytest -q
+cd web && npm test && npm run build
+```
+
+See [E24 cryptographic boundaries](docs/E24_ED25519_DEMO_BOUNDARIES.md). No real signers or external integrations are connected.

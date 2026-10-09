@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "phimirrorhex"
-version = "0.23.0"
+version = "0.24.0"
 description = "A reproducible sixfold topology and audit-scheduling research prototype"
 readme = "README.md"
 requires-python = ">=3.11"
 license = {text = "MIT"}
 authors = [{name = "MichaelWave369"}]
-dependencies = []
+dependencies = ["cryptography>=43,<49"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8,<10"]
