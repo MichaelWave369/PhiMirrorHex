@@ -158,6 +158,7 @@ def signature_qualification_report():
     tampered[0]["checkpoint"]["head"] = "f"*64
     wrong_id = copy.deepcopy(honest)
     wrong_id[0]["signer_id"] = "field-b"
+    wrong_id[1]["signer_id"] = "field-a"
     dup = copy.deepcopy(honest)
     dup[2]["signer_id"] = "field-a"
     old_epoch = [sign_demo(i, ref, epoch=2) for i in WITNESSES]

@@ -114,7 +114,7 @@ export async function signatureQualificationReport(){
  const honest=await Promise.all(WITNESSES.map(i=>signDemo(i,ref)));
  const conflict=clone(honest);conflict[2]=await signDemo('field-c',{...ref,head:'f'.repeat(64)});
  const tampered=clone(honest);tampered[0].checkpoint.head='f'.repeat(64);
- const wrong=clone(honest);wrong[0].signer_id='field-b';
+ const wrong=clone(honest);wrong[0].signer_id='field-b';wrong[1].signer_id='field-a';
  const dup=clone(honest);dup[2].signer_id='field-a';
  const old=await Promise.all(WITNESSES.map(i=>signDemo(i,ref,2)));
  const fake=clone(honest);fake[1].identity_authenticated=true;
@@ -174,7 +174,7 @@ export async function signatureQualificationReport(){
   },
   limitations:[
    'This demo uses public deterministic Ed25519 private seeds: anyone can forge each fixture signer.',
-   'Signature verification proves possession of a key, not its owner\\'s identity or independence.',
+   'Signature verification proves possession of a key, not its identity or independence.',
    'Revocation, epochs, and sequence counters are in-memory verifier arguments only.',
    'All-signer forgery and unsigned suffix edits can still yield matching signed prefix claims.',
    'No live trust root, durable replay database, external custody, or agent action authority.'
