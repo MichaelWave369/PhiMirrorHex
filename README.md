@@ -2,7 +2,7 @@
 
 > **As Above, So Below. Coherence Through Symmetry.**
 
-**Φ-Mirror Hex E1–E22** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
+**Φ-Mirror Hex E1–E23** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
 
 The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edges, 12 triangular faces). The *logical* verification architecture is deliberately different from its geometry:
 
@@ -454,3 +454,20 @@ cd web && npm test && npm run build
 ```
 
 See [E22 checkpoint protocol](docs/E22_OFFLINE_CHECKPOINTS.md). All outcomes remain synthetic, informational, unsigned and non-authorizing.
+
+## E23 · Local Witness Claims & Split-View Audit
+
+E23 tests three **local, unauthenticated software copies** of the E22 checkpoint as separately labeled **claims**, not as real independent witnesses. It rejects duplicate profiles or fabricated identity/independence assertions, refuses to compare different checkpoint positions, and classifies any same-count disagreement as **SPLIT_VIEW_DETECTED**, even if 2 of 3 claims agree. Claim counts describe the observations but confer **no trusted quorum or operational authority**.
+
+Eleven frozen scenarios: 3 **AGREEMENT_UNAUTHENTICATED**, 2 split views, 1 incomparable, 1 insufficient, 2 invalid witness sets, 1 fork and 1 rollback. The three agreements intentionally include two **known blind spots**: co-rewriting a ledger and all three pins, and rewriting only after the saved protected prefix. All claims, groups and outcomes must match exactly between independent Python and JavaScript models.
+
+The new React **WITNESSES** room shows each witness claim group, the two-to-one conflict without majority promotion, two undetectable cases, and an exportable read-only receipt. **No signatures, authenticated identities, independent custodians, real sensors, live agent integrations or action grants are present.**
+
+```bash
+python -m phimirrorhex --mode witness --output e23-witness-qualification.json
+node tests/check-witness-parity.mjs e23-witness-qualification.json
+python -m pytest -q
+cd web && npm test && npm run build
+```
+
+See [E23 protocol](docs/E23_WITNESS_SPLIT_VIEW_AUDIT.md). This is a synthetic research qualification, not independent evidence or a permissions system.
