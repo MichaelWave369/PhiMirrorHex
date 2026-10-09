@@ -130,7 +130,8 @@ def consume(state, claim, ledger):
     body = {k: v for k, v in claim.items() if k != "signature_hex"}
     if not _verify(claim["key_id"], body, claim["signature_hex"]):
         return _decision(state, "REFUSED_BAD_SIGNATURE", "ED25519_VERIFY_FAILED")
-    if compare_checkpoint(ledger, claim["checkpoint"])["status"] != "PREFIX_MATCHES_UNAUTHENTICATED":
+    if (not isinstance(claim["checkpoint"], dict) or claim["checkpoint"].get("count") != 4
+            or compare_checkpoint(ledger, claim["checkpoint"])["status"] != "PREFIX_MATCHES_UNAUTHENTICATED"):
         return _decision(state, "REFUSED_CHECKPOINT", "UNSIGNED_PREFIX_REFERENCE_NOT_MATCHED", 1)
     after = copy.deepcopy(state)
     after["last_sequence"] = seq
@@ -161,7 +162,8 @@ def rotate(state, record, ledger):
     if not old_ok or not new_ok:
         return _decision(state, "REFUSED_BAD_ROTATION_PROOF", "BOTH_KEY_SIGNATURES_REQUIRED",
                          int(old_ok) + int(new_ok))
-    if compare_checkpoint(ledger, record["checkpoint"])["status"] != "PREFIX_MATCHES_UNAUTHENTICATED":
+    if (not isinstance(record["checkpoint"], dict) or record["checkpoint"].get("count") != 4
+            or compare_checkpoint(ledger, record["checkpoint"])["status"] != "PREFIX_MATCHES_UNAUTHENTICATED"):
         return _decision(state, "REFUSED_CHECKPOINT", "UNSIGNED_ROTATION_REFERENCE_NOT_MATCHED", 2)
     after = copy.deepcopy(state)
     after.update(epoch=2, active_key=KEY_NEW, sequence_floor=10, revoked_keys=[KEY_OLD])

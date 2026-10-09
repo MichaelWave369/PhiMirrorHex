@@ -92,7 +92,7 @@ export async function consumeClaim(s,claim,ledger){
  const {signature_hex,...body}=claim;
  if(!(await verify(claim.key_id,body,signature_hex)))
   return decision(s,'REFUSED_BAD_SIGNATURE','ED25519_VERIFY_FAILED');
- if((await compareCheckpoint(ledger,claim.checkpoint)).status!=='PREFIX_MATCHES_UNAUTHENTICATED')
+ if(claim.checkpoint?.count!==4||(await compareCheckpoint(ledger,claim.checkpoint)).status!=='PREFIX_MATCHES_UNAUTHENTICATED')
   return decision(s,'REFUSED_CHECKPOINT','UNSIGNED_PREFIX_REFERENCE_NOT_MATCHED',1);
  return decision({...s,last_sequence:seq},'ACCEPTED_DEMO_UNTRUSTED',
   'VALID_FIXTURE_SIGNATURE_NO_AUTHORITY',1);
@@ -112,7 +112,7 @@ export async function rotateKey(s,record,ledger){
   fresh=await verify(KEY_NEW,body,new_signature_hex);
  if(!old||!fresh)return decision(s,'REFUSED_BAD_ROTATION_PROOF',
   'BOTH_KEY_SIGNATURES_REQUIRED',Number(old)+Number(fresh));
- if((await compareCheckpoint(ledger,record.checkpoint)).status!=='PREFIX_MATCHES_UNAUTHENTICATED')
+ if(record.checkpoint?.count!==4||(await compareCheckpoint(ledger,record.checkpoint)).status!=='PREFIX_MATCHES_UNAUTHENTICATED')
   return decision(s,'REFUSED_CHECKPOINT','UNSIGNED_ROTATION_REFERENCE_NOT_MATCHED',2);
  return decision({...s,epoch:2,active_key:KEY_NEW,sequence_floor:10,revoked_keys:[KEY_OLD]},
   'ROTATED_DEMO_UNTRUSTED','PUBLIC_FIXTURE_DUAL_SIGNED_NO_IDENTITY',2);
