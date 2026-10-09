@@ -99,3 +99,7 @@ Discloses retrospective E17 development use, weighted quorum selection, and fixe
 ## E19 EVIDENCE tab
 
 A local-only producer and verifier for unsigned `field-evidence.synthetic-quorum.v1` packets. Exports all 36 E18 cases and 3,456 compact frame decisions with SHA-256, schema/origin/authority barriers and a strict local experiment-replay verifier. The UI never uploads or executes the pasted JSON. NestedBubbleGear, BrainC and SuperPhiVessel are potential **future** read-only consumers and are **not connected** in this rung.
+
+## E20 RECEIVERS tab
+
+Run and inspect a nine-case local quarantine/abstention policy suite for three future read-only consumer profiles, with complete rejection reasons and zero external actions. The JSON inspector uses E19's exact-replay unsigned packet verifier. No external repository integration has been deployed. Python and JS qualification receipts must match by canonical SHA256 and complete data in CI.

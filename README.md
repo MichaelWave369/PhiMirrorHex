@@ -2,7 +2,7 @@
 
 > **As Above, So Below. Coherence Through Symmetry.**
 
-**Φ-Mirror Hex E1–E19** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
+**Φ-Mirror Hex E1–E20** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
 
 The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edges, 12 triangular faces). The *logical* verification architecture is deliberately different from its geometry:
 
@@ -403,3 +403,20 @@ cd web && npm test && npm run build
 ```
 
 Content integrity ≠ cryptographic signature. A validated synthetic packet ≠ measured physics, confirmed scientific theory, consciousness observation, independent witness, or permission for agent actions.
+
+## E20 · Governed Evidence Receivers
+
+E20 qualifies three **local, contract-only receiver profiles** for prospective NestedBubbleGear, BrainC and SuperPhiVessel handoffs. No other repository is changed or connected. The only potentially permitted operation is `inspect`; a validated but **UNSIGNED** E19 packet is **QUARANTINED_READ_ONLY**, never imported as trusted memory or operational authority. Unsupported consumers and malformed receipts are rejected; execution, approval, training, routing and persistence requests are refused before dispatch.
+
+A frozen **nine-scenario qualification** exercises three legitimate synthetic receipts and six misuse cases: corrupted frames, recomputed-checksum privilege escalation, prompt injection, forged signature, forbidden Reality Gate approval and unknown consumer. Expected: **3 quarantined, 5 rejected, 1 action refused, 0 promotions and 0 external calls**. All decisions are reproduced independently in Python and JavaScript, with a deterministic SHA-256 qualification receipt and full refusal evidence in CI.
+
+New **RECEIVERS** React tab shows each scenario, disposition, reasons, strictly projected synthetic-only statistics, a local E19 JSON inspector and an exportable qualification report. No live agent calls, model training, network requests or real evidence.
+
+```bash
+python -m phimirrorhex --mode receiver-qualification --output e20-receiver-qualification.json
+node tests/check-receiver-parity.mjs e20-receiver-qualification.json
+python -m pytest -q
+cd web && npm test && npm run build
+```
+
+See [E20 frozen receiver protocol](docs/E20_GOVERNED_EVIDENCE_RECEIVERS.md). This tests safe handling of synthetic data; it is not authenticated distributed networking or external tool authorization.

@@ -97,6 +97,10 @@ jobs:
         run: python -m phimirrorhex --mode portable-evidence --output e19-portable-evidence.json
       - name: Verify E19 independent browser and Python packet, SHA-256 and tamper barriers
         run: node tests/check-portable-evidence-parity.mjs e19-portable-evidence.json
+      - name: Generate E20 governed receiver nine-case qualification
+        run: python -m phimirrorhex --mode receiver-qualification --output e20-receiver-qualification.json
+      - name: Verify E20 independent JavaScript Python quarantine and refusal parity
+        run: node tests/check-receiver-parity.mjs e20-receiver-qualification.json
       - name: Upload reproducibility receipt
         uses: actions/upload-artifact@v4
         with:
@@ -120,3 +124,4 @@ jobs:
             e17-consensus-transfer-fixture.json
             e18-prospective-audit-fixture.json
             e19-portable-evidence.json
+            e20-receiver-qualification.json
