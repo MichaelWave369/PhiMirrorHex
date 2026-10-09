@@ -122,9 +122,8 @@ export async function signatureQualificationReport(){
  pre=await rehash(pre,1);
  let after=clone(ledger);after.events[7].reason_codes.push('E24_SUFFIX_REWRITE');
  after=await rehash(after,7);
- const forged=await Promise.all(WITNESSES.map(i=>signDemo(i,{
-  ...(await makeCheckpoint(pre,4))
- })));
+ const forgedRef=await makeCheckpoint(pre,4);
+ const forged=await Promise.all(WITNESSES.map(i=>signDemo(i,forgedRef)));
  const short={schema:ledger.schema,events:clone(ledger.events.slice(0,3)),
   head:ledger.events[2].event_hash};
  const diff=clone(honest);diff[2]=await signDemo('field-c',await makeCheckpoint(ledger,5));
