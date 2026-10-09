@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {intakeQualificationReport,verifyIntakeChain}
+import {intakeQualificationReport,verifyIntakeChain,ZERO}
  from '../src/intake-chain-model.mjs';
-import {ZERO,makeCheckpoint,compareCheckpoint,checkpointQualificationReport}
+import {makeCheckpoint,compareCheckpoint,checkpointQualificationReport}
  from '../src/checkpoint-model.mjs';
 
 test('E22 eight exact scenarios and honest post-anchor rewrite blindspot',async()=>{
