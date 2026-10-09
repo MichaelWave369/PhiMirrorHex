@@ -361,3 +361,8 @@ footer a { color: #abc5d2; }
 .top-nav{min-width:0;overflow-x:auto;scrollbar-width:thin;overscroll-behavior-inline:contain}
 .top-nav button{flex:0 0 auto;white-space:nowrap}
 @media(max-width:1950px){.top-nav button{padding-left:6px;padding-right:6px;font-size:9px}}
+
+/* E20 all room tabs remain accessible with horizontal scrolling. */
+.top-nav{min-width:0;overflow-x:auto;scrollbar-width:thin;overscroll-behavior-inline:contain}
+.top-nav button{flex:0 0 auto;white-space:nowrap}
+@media(max-width:1950px){.top-nav button{padding-left:6px;padding-right:6px;font-size:9px}}
