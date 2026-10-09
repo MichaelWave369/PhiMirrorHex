@@ -2,7 +2,7 @@
 
 > **As Above, So Below. Coherence Through Symmetry.**
 
-**Φ-Mirror Hex E1–E25** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
+**Φ-Mirror Hex E1–E26** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
 
 The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edges, 12 triangular faces). The *logical* verification architecture is deliberately different from its geometry:
 
@@ -505,3 +505,20 @@ cd web && npm test && npm run build
 ```
 
 See [E25 frozen protocol](docs/E25_KEY_LIFECYCLE.md). All evidence remains synthetic and non-authorizing.
+
+## E26 · Recovery Snapshot and Rollback Qualification
+
+E25 exposed an in-memory key-revocation and replay-history reset. E26 explores a **separately retainable SHA-256 snapshot reference**, with deliberately strict comparison of the saved E25 verifier state, its generation and checksum. It refuses altered snapshots, old generations, same-generation forks, missing/false references and unpinned future snapshots. All stored values remain unauthenticated and local.
+
+**Twelve fixed challenges** include **four untrusted recovered states, eight refusals**, and three deliberately successful unprotected attacks: rewrite state and reference together, rewind both to an older epoch-two state, or fabricate a matching genesis state and reference. The last attack restores the old key and accepts the previously replayed E25 fixture claim; retaining the demonstrated epoch-two state instead correctly refuses it. No actual secure persistence or authenticated anchoring exists.
+
+The **RECOVERY** React room displays each refusal, both replay probe outcomes, JSON receipt export, separate unsigned snapshot/reference exports and in-memory comparison. Independent Python/JS parity checks exact scenario results and SHA256. **None of these mechanisms authenticates an operator, maintains actual durable state or grants external authority.**
+
+```bash
+python -m phimirrorhex --mode recovery --output e26-recovery-qualification.json
+node tests/check-recovery-parity.mjs e26-recovery-qualification.json
+python -m pytest -q
+cd web && npm test && npm run build
+```
+
+See [E26 protocol](docs/E26_RECOVERY_ROLLBACK.md). All conclusions remain synthetic.

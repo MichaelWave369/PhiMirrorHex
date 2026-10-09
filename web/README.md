@@ -123,3 +123,7 @@ Runs 15 fixed local Ed25519 WebCrypto challenge scenarios with public determinis
 ## E25 LIFECYCLE tab
 
 Browser-only demonstration of two publicly known Ed25519 fixture generations: old and new keys must both sign a rotation; retired and replayed claims are refused, but public-key forgery and fresh-process state resets remain admitted known vulnerabilities. Runs 17 frozen scenarios and exports complete JSON. No durable replay cache, real identities, hidden secrets, permissions or external calls.
+
+## E26 RECOVERY research room
+
+Runs 12 deterministic rollback and snapshot recovery challenges and two E25 signing-key replay probes. Users may separately export an unsigned example state and reference, paste JSON for a purely local comparison, and inspect all known blind spots. There is no durable browser storage, trusted signer, independent anchor or agent permission. The Python and JavaScript results are verified byte-for-byte in CI.
