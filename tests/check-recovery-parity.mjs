@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {recoveryQualificationReport} from '../web/src/recovery-model.mjs';
+const py=JSON.parse(readFileSync(process.argv[2]||'e26-recovery-qualification.json','utf8'));
+const js=await recoveryQualificationReport();
+assert.deepEqual(js,py,'E26 full Python-WebCrypto event state, recovery decision and SHA-256 parity');
+assert.equal(js.summary.reset_replay_accepted,true);
+assert.equal(js.summary.co_rewrite_passed,true);
+assert.equal(js.summary.authority_grants,0);
+console.log('E26 PASS: 12 checkpoint recovery scenarios, corrupted snapshots, rollback, forged co-references, restart replay, full SHA parity.');
