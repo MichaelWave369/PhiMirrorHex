@@ -105,6 +105,10 @@ jobs:
         run: python -m phimirrorhex --mode intake-chain --output e21-intake-chain.json
       - name: Verify E21 full Python and JavaScript intake-chain decision parity
         run: node tests/check-intake-chain-parity.mjs e21-intake-chain.json
+      - name: Generate E22 offline checkpoint and rollback audit
+        run: python -m phimirrorhex --mode checkpoint --output e22-checkpoint-qualification.json
+      - name: Verify E22 independent Python JavaScript rollback fork blindspot parity
+        run: node tests/check-checkpoint-parity.mjs e22-checkpoint-qualification.json
       - name: Upload reproducibility receipt
         uses: actions/upload-artifact@v4
         with:
@@ -130,3 +134,4 @@ jobs:
             e19-portable-evidence.json
             e20-receiver-qualification.json
             e21-intake-chain.json
+            e22-checkpoint-qualification.json

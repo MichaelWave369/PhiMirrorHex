@@ -2,7 +2,7 @@
 
 > **As Above, So Below. Coherence Through Symmetry.**
 
-**Φ-Mirror Hex E1–E21** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
+**Φ-Mirror Hex E1–E22** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
 
 The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edges, 12 triangular faces). The *logical* verification architecture is deliberately different from its geometry:
 
@@ -437,3 +437,20 @@ cd web && npm test && npm run build
 ```
 
 See [E21 protocol](docs/E21_UNTRUSTED_INTAKE_CHAIN.md). All signals are synthetic; results confer no real physical, cognitive or device authority.
+
+## E22 · Offline Checkpoints & Rollback Defense
+
+E21's hash-linked evidence intake log was deliberately **unsigned and in-memory**. E22 adds a **separately exportable checkpoint** (protected event count + exact SHA256 chain head) and a local comparison API for checking a later ledger against that independently retained reference.
+
+Eight frozen adversarial scenarios include a clean match, valid append, truncated-but-valid rollback, rewrite-and-rehash of the protected prefix, changed reference value, falsely authenticated reference, corrupt ledger, and **a verified-suffix rewrite that still passes because it occurs AFTER the checkpoint**. This explicitly documents the protection gap. Expected: **3 prefix matches, 1 rollback, 2 forks, 1 invalid reference, 1 invalid ledger; 0 authority grants**. Both Python and independent JS model produce identical receipts and SHA256 hashes.
+
+The React **CHECKPOINT** room displays all cases and their failure reasons, lets users separately export an E21 chain and E22 checksum checkpoint, and compares pasted JSON records in memory. **The repository does not create a trusted anchor, digital signature, persistent replay cache, cross-app connection or tamper-proof storage.** Independently guarding the checkpoint is the caller's responsibility; an attacker who can rewrite both items can hide history changes.
+
+```bash
+python -m phimirrorhex --mode checkpoint --output e22-checkpoint-qualification.json
+node tests/check-checkpoint-parity.mjs e22-checkpoint-qualification.json
+python -m pytest -q
+cd web && npm test && npm run build
+```
+
+See [E22 checkpoint protocol](docs/E22_OFFLINE_CHECKPOINTS.md). All outcomes remain synthetic, informational, unsigned and non-authorizing.
