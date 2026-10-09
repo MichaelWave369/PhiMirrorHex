@@ -117,6 +117,10 @@ jobs:
         run: python -m phimirrorhex --mode signed-witness --output e24-signature-qualification.json
       - name: Verify E24 independent Python and browser WebCrypto Ed25519 parity
         run: node tests/check-signature-parity.mjs e24-signature-qualification.json
+      - name: Generate E25 two-key lifecycle and state reset qualification
+        run: python -m phimirrorhex --mode lifecycle --output e25-key-lifecycle.json
+      - name: Verify E25 independent Python WebCrypto dual-signature and replay parity
+        run: node tests/check-lifecycle-parity.mjs e25-key-lifecycle.json
       - name: Upload reproducibility receipt
         uses: actions/upload-artifact@v4
         with:
@@ -145,3 +149,4 @@ jobs:
             e22-checkpoint-qualification.json
             e23-witness-qualification.json
             e24-signature-qualification.json
+            e25-key-lifecycle.json

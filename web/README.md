@@ -119,3 +119,7 @@ Shows 11 exact local witness-claim scenarios against the E22 checkpoint. Two cop
 ## E24 SIGNATURES tab
 
 Runs 15 fixed local Ed25519 WebCrypto challenge scenarios with public deterministic fixture keys and exact Python parity. It demonstrates valid signature bytes without authenticated people, independent custody, persistent revocation or authority; visibly includes forged unanimous fixture signatures and unprotected suffix rewrites. Requires modern WebCrypto Ed25519, and makes no network calls.
+
+## E25 LIFECYCLE tab
+
+Browser-only demonstration of two publicly known Ed25519 fixture generations: old and new keys must both sign a rotation; retired and replayed claims are refused, but public-key forgery and fresh-process state resets remain admitted known vulnerabilities. Runs 17 frozen scenarios and exports complete JSON. No durable replay cache, real identities, hidden secrets, permissions or external calls.

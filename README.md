@@ -2,7 +2,7 @@
 
 > **As Above, So Below. Coherence Through Symmetry.**
 
-**Φ-Mirror Hex E1–E24** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
+**Φ-Mirror Hex E1–E25** is a dependency-light, reproducible research prototype for sixfold agent coordination, pairwise verification, and causal-memory preservation.
 
 The organizing picture is a **hexagonal bipyramid** (8 vertices, 18 physical edges, 12 triangular faces). The *logical* verification architecture is deliberately different from its geometry:
 
@@ -488,3 +488,20 @@ cd web && npm test && npm run build
 ```
 
 See [E24 cryptographic boundaries](docs/E24_ED25519_DEMO_BOUNDARIES.md). No real signers or external integrations are connected.
+
+## E25 · Key Rotation, Revocation and Replay State
+
+E25 extends E24's demonstrative real Ed25519 signatures with a **dual-signed key rotation**: both the old and new fixture keys must sign the canonical rollover. After rotation, a pure in-memory state policy retires the old key, enforces a new global sequence floor, and refuses duplicate or outdated claims. A frozen 17-case test matrix records **5 untrusted accepted signatures, 1 fixture rotation, and 11 refusals**. Python and browser JavaScript implement the flow independently and must produce identical Ed25519 signatures, outcomes, and SHA256 reports.
+
+Two acceptance cases are intentionally **security failures**. The publicly committed private seeds let anyone forge a valid signature, and restarting from a fresh in-memory genesis **accepts an old claim again**, because key retirement and replay memory were lost. This research does **not** implement trustworthy identity, crash-proof replay state, independent signers, production key storage, or agent authority.
+
+New React **LIFECYCLE** room displays each transition, active/retired key, monotonic sequence, complete refusal evidence and prominent known vulnerabilities. No external app integration or network calls occur.
+
+```bash
+python -m phimirrorhex --mode lifecycle --output e25-key-lifecycle.json
+node tests/check-lifecycle-parity.mjs e25-key-lifecycle.json
+python -m pytest -q
+cd web && npm test && npm run build
+```
+
+See [E25 frozen protocol](docs/E25_KEY_LIFECYCLE.md). All evidence remains synthetic and non-authorizing.
