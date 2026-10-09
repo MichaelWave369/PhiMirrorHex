@@ -101,6 +101,10 @@ jobs:
         run: python -m phimirrorhex --mode receiver-qualification --output e20-receiver-qualification.json
       - name: Verify E20 independent JavaScript Python quarantine and refusal parity
         run: node tests/check-receiver-parity.mjs e20-receiver-qualification.json
+      - name: Generate E21 hash-linked intake and replay qualification
+        run: python -m phimirrorhex --mode intake-chain --output e21-intake-chain.json
+      - name: Verify E21 full Python and JavaScript intake-chain decision parity
+        run: node tests/check-intake-chain-parity.mjs e21-intake-chain.json
       - name: Upload reproducibility receipt
         uses: actions/upload-artifact@v4
         with:
@@ -125,3 +129,4 @@ jobs:
             e18-prospective-audit-fixture.json
             e19-portable-evidence.json
             e20-receiver-qualification.json
+            e21-intake-chain.json

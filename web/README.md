@@ -103,3 +103,7 @@ A local-only producer and verifier for unsigned `field-evidence.synthetic-quorum
 ## E20 RECEIVERS tab
 
 Run and inspect a nine-case local quarantine/abstention policy suite for three future read-only consumer profiles, with complete rejection reasons and zero external actions. The JSON inspector uses E19's exact-replay unsigned packet verifier. No external repository integration has been deployed. Python and JS qualification receipts must match by canonical SHA256 and complete data in CI.
+
+## E21 INTAKE tab
+
+Runs 11 local synthetic intake tests with quarantine, replay deduplication, explicitly unauthenticated digest pins and hash-linked audit events. Inspect every disposition, proof-of-self-consistency hash, source limitation and complete failed-evidence case; import an in-memory JSON chain for structural checking and export the full report. No external connections or persistent trust anchors exist. Python and JavaScript CI must reproduce all 11 decisions and hashes.
