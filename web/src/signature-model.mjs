@@ -173,7 +173,7 @@ export async function signatureQualificationReport(){
   },
   limitations:[
    'This demo uses public deterministic Ed25519 private seeds: anyone can forge each fixture signer.',
-   'Signature verification proves possession of a key, not its identity or independence.',
+   "Signature verification proves possession of a key, not its owner's identity or independence.",
    'Revocation, epochs, and sequence counters are in-memory verifier arguments only.',
    'All-signer forgery and unsigned suffix edits can still yield matching signed prefix claims.',
    'No live trust root, durable replay database, external custody, or agent action authority.'
